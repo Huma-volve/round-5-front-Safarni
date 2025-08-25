@@ -1,14 +1,14 @@
-import { BrowserRouter } from 'react-router-dom'
 import './App.css'
-import AppNavBar from './components/NavBar/AppNavBar'
+import AppRoutes from './routes/AppRoutes'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
-
   return (
-    <BrowserRouter>
-    <AppNavBar />
-    </BrowserRouter>
-
+     <QueryClientProvider client={queryClient}>
+       <AppRoutes />
+     </QueryClientProvider>
   )
 }
 
