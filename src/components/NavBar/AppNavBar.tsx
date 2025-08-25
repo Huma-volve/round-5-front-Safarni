@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import navicon from "@/assets/images/icons/safarni-navicon.png";
 import { Search, SlidersHorizontal, Home, Heart, Map, SquareStack } from "lucide-react";
 import profileicon from "@/assets/images/icons/avatar-navicon.jpg";
@@ -51,39 +51,19 @@ export default function AppNavBar() {
 
         {/* right side (desktop/tablet only) */}
         <div className="hidden md:flex items-center gap-6">
+          <Link to="/search">
           <Search className="text-gray-600 w-5 h-5" />
+          </Link>
+          <Link to="/filter">
           <SlidersHorizontal className="text-gray-600 w-5 h-5" />
+          </Link>
+          <Link to="">
           <img
             src={profileicon}
             alt="profile icon"
             className="w-8 h-8 rounded-full"
           />
-        </div>
-      </div>
-
-      {/* Mobile Top Section */}
-      <div className="md:hidden bg-white px-4 pt-3 pb-4">
-        {/* Welcome */}
-        <div className="flex justify-between items-center mb-4">
-            <div className="flex flex-col gap-2">
-                <p className="text-black font-medium text-base">Welcome</p>
-                <p className="capitalize text-gray-400 text-xs">Explore the best places in world!</p>
-            </div>
-          <img
-            src={profileicon}
-            alt="profile icon"
-            className="w-10 h-10 rounded-full"
-          />
-        </div>
-        {/* Search + Filter */}
-        <div className="flex flex-row-reverse items-center gap-3">
-          <button className="p-3 rounded-xl border border-gray-300 text-gray-400 flex items-center justify-center">
-            <SlidersHorizontal size={20} />
-          </button>
-          <button className="flex-1 flex items-center gap-2 border border-gray-300 text-gray-400 px-3 py-3 rounded-xl">
-            <Search size={18} />
-            <span>Search...</span>
-          </button>
+          </Link>
         </div>
       </div>
 

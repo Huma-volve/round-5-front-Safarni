@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCategories } from "@/hooks/Categories/useCategories";
+import noimage from "@/assets/images/noimage-home.png";
 
 export default function CategoriesHome() {
   const { categories, isLoading, isError } = useCategories();
@@ -11,16 +12,16 @@ export default function CategoriesHome() {
   const visibleCategories = showAll ? categories : categories.slice(0, 4);
 
   return (
-    <div className="mt-12 px-6 py-4 md:px-12 lg:px-32 mb-12">
+    <div className="mt-12 px-6 py-4 md:px-12 lg:px-32">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between">
         <h2 className="text-xl md:text-2xl font-semibold text-gray-900">Categories</h2>
-        {categories.length > 8 && (
+        {categories.length > 4 && (
           <button
             onClick={() => setShowAll(!showAll)}
             className="text-sm md:text-base text-blue-600 hover:underline"
           >
-            {showAll ? "See less" : "See all"}
+            {showAll ? "View less" : "View all"}
           </button>
         )}
       </div>
@@ -34,8 +35,9 @@ export default function CategoriesHome() {
           >
             <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-md">
               <img
-                src={cat.image}
+                src={cat.image && noimage}
                 alt={cat.title}
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
