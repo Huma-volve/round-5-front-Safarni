@@ -53,7 +53,7 @@ export default function FilterToursResult() {
             className="w-full h-48 object-cover"
           />
           <div className="p-4">
-            <h2 className="text-lg font-bold">{tour.title}</h2>
+            <h2 className="text-lg font-bold text-gray-950">{tour.title}</h2>
             <p className="text-gray-600">{tour.location}</p>
             <p className="text-blue-600 font-semibold mt-2">${tour.price}</p>
             <p className="text-yellow-500">⭐ {tour.rating}</p>

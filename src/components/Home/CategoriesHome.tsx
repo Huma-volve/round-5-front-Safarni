@@ -42,7 +42,7 @@ export default function CategoriesHome() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="mt-3 text-sm md:text-base font-medium">{cat.title}</h3>
+            <h3 className="mt-3 text-sm md:text-base font-medium text-blue-800">{cat.title}</h3>
           </div>
         ))}
       </div>

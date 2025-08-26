@@ -89,7 +89,7 @@ export default function FilterPage() {
       <div className="space-y-6">
         {/* Sort */}
         <div>
-          <h2 className="font-semibold mb-2">Sort By</h2>
+          <h2 className="font-semibold mb-2 text-black">Sort By</h2>
           <div className="flex flex-wrap gap-4 mt-4">
             {sortOptions.map((opt) => (
               <button
@@ -110,7 +110,7 @@ export default function FilterPage() {
 
         {/* Budget Range */}
         <div>
-          <h2 className="font-semibold mb-2">Budget Range</h2>
+          <h2 className="font-semibold mb-2 text-black">Budget Range</h2>
           <div className="flex flex-col items-center gap-6 mt-4">
             <img src={rangeImg} alt="range" className="w-3/4 max-w-sm" />
 
@@ -166,7 +166,7 @@ export default function FilterPage() {
 
         {/* Location */}
         <div>
-          <h2 className="font-semibold mb-2">Location</h2>
+          <h2 className="font-semibold mb-2 text-black">Location</h2>
           <input
             type="text"
             value={location}
@@ -179,7 +179,7 @@ export default function FilterPage() {
 
         {/* Rating */}
         <div>
-          <h2 className="font-semibold mb-2">Rating</h2>
+          <h2 className="font-semibold mb-2 text-black">Rating</h2>
           <div className="flex gap-3 mt-4 flex-wrap">
             {[1, 2, 3, 4, 5].map((num) => (
               <button

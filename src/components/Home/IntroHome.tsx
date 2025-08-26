@@ -39,7 +39,7 @@ export default function IntroHome() {
       <div className="hidden md:flex flex-col md:flex-row justify-between items-center gap-12">
         {/* desc */}
         <div className="flex flex-col md:w-3/5 lg:w-1/2 text-center md:text-left">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[55px] font-semibold capitalize tracking-wide">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[55px] font-semibold text-black capitalize tracking-wide">
             Visit the most <span className="text-[#1E429F]">beautiful places</span><br /> in the world
           </h2>
           <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed max-w-full lg:max-w-[80%] mx-auto md:mx-0">

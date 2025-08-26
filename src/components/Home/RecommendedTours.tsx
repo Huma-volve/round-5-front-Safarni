@@ -48,7 +48,7 @@ export default function RecommendedTours() {
             <div className="mt-3 flex flex-col flex-1">
               {/* title + rating */}
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-sm md:text-base line-clamp-1">
+                <h3 className="text-gray-950 font-semibold text-sm md:text-base line-clamp-1">
                   {tour.title}
                 </h3>
                 <div className="flex items-center text-yellow-500 text-sm">

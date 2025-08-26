@@ -49,7 +49,7 @@ export default function TopRatedTours() {
             <div className="flex flex-col flex-1">
               {/* top row: label + rating */}
               <div className="flex items-center justify-between">
-                <span className="text-[10px] md:text-xs text-gray-700 font-semibold px-2 py-0.5 rounded-full">
+                <span className="text-[10px] md:text-xs text-gray-700 font-semibold py-0.5 rounded-full">
                   Full Day Tour
                 </span>
                 <div className="flex items-center text-yellow-500 text-xs md:text-sm">
@@ -59,7 +59,7 @@ export default function TopRatedTours() {
               </div>
 
               {/* title */}
-              <h3 className="mt-2 font-semibold text-s md:text-base line-clamp-1">
+              <h3 className="mt-2 text-black font-semibold text-s md:text-base line-clamp-1">
                 {tour.title}
               </h3>
 
