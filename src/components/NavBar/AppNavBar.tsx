@@ -10,7 +10,9 @@ export default function AppNavBar() {
       <div className="w-full bg-white px-32 md:px-12 sm:px-6 py-4 flex justify-between items-center">
         {/* logo (desktop/tablet) */}
         <div className="hidden md:flex flex-col items-center">
+          <Link to="/">
           <img src={navicon} alt="safarni icon" className="w-10 md:w-12" />
+          </Link>
           <h4 className="text-[#1E429F] text-xs md:text-sm font-medium">Safarni</h4>
         </div>
         {/* categories (desktop/tablet only) */}

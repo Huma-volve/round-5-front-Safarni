@@ -15,3 +15,16 @@ export interface RecommendedTourResponse {
   is_recommended: number;
   rating: number;
 }
+
+export interface TourResponse {
+  id: number;
+  category_id: number;
+  title: string;
+  location: string;
+  description: string;
+  price: string;
+  image: string;
+  views: number;
+  is_recommended: boolean;
+  rating: number;
+}

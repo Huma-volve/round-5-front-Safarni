@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useCategories } from "@/hooks/Categories/useCategories";
 import noimage from "@/assets/images/noimage-home.png";
+import Loading from "../common/Loading";
 
 export default function CategoriesHome() {
   const { categories, isLoading, isError } = useCategories();
   const [showAll, setShowAll] = useState(false);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   if (isError) return <p>Something went wrong!</p>;
 
   const visibleCategories = showAll ? categories : categories.slice(0, 4);

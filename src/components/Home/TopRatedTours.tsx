@@ -2,6 +2,7 @@ import { useTopRatedTours } from "@/hooks/RecommendedTours/useTopRatedTours";
 import { useState } from "react";
 import { MapPin, Star } from "lucide-react";
 import noimage from "@/assets/images/noimage-home.png";
+import Loading from "../common/Loading";
 
 export default function TopRatedTours() {
   const [showAll, setShowAll] = useState(false);
@@ -9,7 +10,7 @@ export default function TopRatedTours() {
 
   const displayedTours = showAll ? tours : tours.slice(0, 3);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   if (isError) return <p>Something went wrong!</p>;
 
   return (
