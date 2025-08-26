@@ -1,3 +1,4 @@
+import Compare from '@/pages/Compare'
 import AppLayout from "@/components/Layouts/AppLayout";
 import FilterPage from "@/pages/FilterPages/FilterPage";
 import FilterTourResult from "@/pages/FilterPages/FilterToursResult";
@@ -18,6 +19,8 @@ export default function AppRoutes(){
                 <Route path="/search" element={<SearchPage />} />
                 <Route path="/filter" element={<FilterPage />} />
                 <Route path="/filter-tours" element={<FilterTourResult />} />
+                {/* compare */}
+                <Route path="/compare" element={<Compare />} />
                 </Route>
             </Routes>
         </Router>

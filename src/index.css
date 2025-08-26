@@ -8,24 +8,35 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --background: #FFFFFF;
+    --foreground: #F3F4F6;
+    --compare-bg:#FAFAFA;
+    --card: #F4F4F4;
+    --card-foreground: #D1D5DB8F;
+    --primary: #1E429F;
+    --text:#1A56DB;
+    --primary-foreground: #EBF5FF;
+    --secondary:#4B5563;
+    --secondary-foreground: #A4CAFE;
+    --input: #6B7280;
+    --success:#31C48D;
+    --choose:#E5E7EB;
+    --danger:#F05252;
+    --shadow:#6F6F6F40;
+    --rate:#FCBA42;
+    --check:#1C64F2;
+    --popup:#1119288F;
+    --border:#D1D5DB;
+    --border-g1:#3F52B4;
+    --border-g2:#B22459;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
     --ring: 0 0% 3.9%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -61,7 +72,102 @@
     --chart-5: 340 75% 55%
   }
 }
+@layer utilities {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 75rem;
+      margin-inline: auto;
+    }
+  }
+
+  .Toastify__toast {}
+
+  .layout {
+    @apply flex flex-col min-h-screen;
+  }
+
+  .responsive-action-row {
+    @apply flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .auth-content {
+    @apply flex flex-col lg:flex-row flex-1;
+  }
+
+  .auth-container {
+    @apply flex flex-col w-full max-w-md mx-auto p-6 sm:p-8 lg:p-10;
+  }
+
+  .auth-header {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-secondaryDark;
+  }
+
+  .auth-form {
+    @apply flex flex-col gap-4 py-6;
+  }
+
+  .auth-field {
+    @apply w-full max-w-md;
+  }
+
+  .auth-input-group {
+    @apply flex flex-col justify-between sm:flex-row gap-4 sm:gap-6 w-full;
+  }
+
+  .auth-button {
+    @apply bg-success text-white w-full sm:w-auto px-6 py-2;
+  }
+
+  .form-label {
+    @apply text-lg font-semibold ml-1 text-slate-700;
+  }
+
+  .auth-link {
+    @apply text-placeholder hover:underline cursor-pointer;
+  }
+
+  .drop-link {
+    @apply cursor-pointer;
+  }
+
+  .drop-item {
+    @apply flex items-center px-3 py-3 text-sm hover:bg-red-50 rounded-md transition-colors cursor-pointer w-full;
+  }
+
+  .footer-item {
+    @apply flex flex-col text-gray-200 py-3;
+  }
+
+  .footer-header {
+    @apply text-white font-semibold mb-2;
+  }
+
+  .link-group {
+    @apply flex flex-wrap gap-3;
+  }
+}
 @layer base {
   * {
     @apply border-border;
