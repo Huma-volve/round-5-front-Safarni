@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 function DestinationHero({props}:any) {
     // const {} = props
   return (
-    <div>
+    <div >
       {/* Image */}
       <div
         style={{ backgroundImage: `url(${heroImage})` }}

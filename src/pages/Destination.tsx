@@ -8,7 +8,7 @@ function Destination() {
   //fetch data here based on the id
 
   return (
-    <div>
+    <div className="px-52">
       <DestinationHero/>
       <TopActivities/>
       <BestTimeVisit info="Spring (April - June) and autumn (September - October) are perfect times to visit Paris, with mild weather and fewer tourists."/>
