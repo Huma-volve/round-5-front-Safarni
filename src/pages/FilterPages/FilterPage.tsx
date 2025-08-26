@@ -1,7 +1,7 @@
 import { ChevronLeft, Star } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Range } from "react-range"; // 
+import { Range } from "react-range";
 import rangeImg from "@/assets/images/filter-range.png";
 
 export default function FilterPage() {
@@ -20,17 +20,17 @@ export default function FilterPage() {
   const isDisabled =
     sortOption === "" &&
     values[0] === 0 &&
-    values[1] === 5000 &&
+    values[1] === 1000 &&
     !location &&
     !rating;
 
   const handleClear = () => {
-    setSortOption("low");
-    setValues([0, 5000]);
+    setSortOption("");
+    setValues([0, 1000]);
     setLocation("");
     setRating(null);
   };
-  // navigate to the result page
+  
   const handleViewTours = () => {
   const params = new URLSearchParams();
 
@@ -172,7 +172,7 @@ export default function FilterPage() {
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Enter location..."
-            className="w-full px-4 mt-4 py-3 border rounded-xl bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 mt-4 py-3 border text-gray-950 rounded-xl bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <hr />
