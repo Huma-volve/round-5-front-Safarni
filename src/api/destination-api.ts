@@ -1,0 +1,3 @@
+function getTourDetails(id:number) {
+    
+}
