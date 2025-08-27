@@ -37,6 +37,7 @@ export default function FilterToursResult() {
             className="bg-gray-200 rounded-full px-2 py-2 text-gray-800"
           />
         </Link>
+          <h2 className="text-2xl font-semibold text-gray-800 ml-4">Result</h2>
       </div>
 
      { tours.length === 0 ? 

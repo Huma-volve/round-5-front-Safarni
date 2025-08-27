@@ -18,7 +18,7 @@ export default function AppNavBar() {
   return (
     <>
       {/* Top Navbar (Desktop / Tablet) */}
-      <div className="w-full bg-white px-32 md:px-12 sm:px-6 py-4 flex justify-between items-center">
+      <div className="w-full bg-white px-32 fixed md:px-12 sm:px-6 py-4 flex justify-between items-center">
         {/* logo */}
         <Link to="/">
           <div className="hidden md:flex flex-col items-center">
