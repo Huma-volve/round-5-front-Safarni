@@ -3,7 +3,7 @@ import { COMPARE_DATA } from '@/data/compare/compare'
 
 function Card() {
   return (
-    <div className='w-[100%] flex flex-wrap gap-4 justify-center mt-10'>
+    <div className='w-[100%] flex flex-wrap gap-4 justify-center mt-4'>
       {
         COMPARE_DATA.map((item)=>{
           return(
