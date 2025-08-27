@@ -2,6 +2,7 @@ import { useTopRatedTours } from "@/hooks/RecommendedTours/useTopRatedTours";
 import { useState } from "react";
 import { MapPin, Star } from "lucide-react";
 import noimage from "@/assets/images/noimage-home.png";
+import Loading from "../common/Loading";
 
 export default function TopRatedTours() {
   const [showAll, setShowAll] = useState(false);
@@ -9,7 +10,7 @@ export default function TopRatedTours() {
 
   const displayedTours = showAll ? tours : tours.slice(0, 3);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   if (isError) return <p>Something went wrong!</p>;
 
   return (
@@ -38,7 +39,7 @@ export default function TopRatedTours() {
           >
             {/* left image */}
             <img
-              src={tour.image && noimage}
+              src={tour.image === null  ? noimage : tour.image}
               alt={tour.title}
               loading="lazy"
               className="w-24 h-24 md:w-28 md:h-28 object-cover rounded-lg flex-shrink-0"
@@ -48,7 +49,7 @@ export default function TopRatedTours() {
             <div className="flex flex-col flex-1">
               {/* top row: label + rating */}
               <div className="flex items-center justify-between">
-                <span className="text-[10px] md:text-xs text-gray-700 font-semibold px-2 py-0.5 rounded-full">
+                <span className="text-[10px] md:text-xs text-gray-700 font-semibold py-0.5 rounded-full">
                   Full Day Tour
                 </span>
                 <div className="flex items-center text-yellow-500 text-xs md:text-sm">
@@ -58,7 +59,7 @@ export default function TopRatedTours() {
               </div>
 
               {/* title */}
-              <h3 className="mt-2 font-semibold text-s md:text-base line-clamp-1">
+              <h3 className="mt-2 text-black font-semibold text-s md:text-base line-clamp-1">
                 {tour.title}
               </h3>
 

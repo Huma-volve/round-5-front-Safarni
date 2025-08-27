@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 export default function IntroHome() {
   return (
-    <div className="container mx-auto px-6 md:px-12 lg:px-32 mt-10">
+    <div className="px-6 md:px-12 lg:px-32 mt-10">
       {/* --- Mobile Slider --- */}
       <div className="block md:hidden">
         <Swiper
@@ -35,11 +35,10 @@ export default function IntroHome() {
         </Swiper>
       </div>
 
-      {/* --- Desktop / Tablet Layout --- */}
-      <div className="hidden md:flex flex-col md:flex-row justify-between items-center gap-12">
-        {/* desc */}
-        <div className="flex flex-col md:w-3/5 lg:w-1/2 text-center md:text-left">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[55px] font-semibold capitalize tracking-wide">
+      {/* Desktop / Tablet Layout */}
+      <div className="hidden md:flex flex-col md:flex-row justify-center items-center gap-12">
+        <div className="flex flex-col md:w-3/5 lg:w-[50%] text-center md:text-left">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[55px] font-semibold text-black capitalize tracking-wide">
             Visit the most <span className="text-[#1E429F]">beautiful places</span><br /> in the world
           </h2>
           <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-500 leading-relaxed max-w-full lg:max-w-[80%] mx-auto md:mx-0">
@@ -49,7 +48,7 @@ export default function IntroHome() {
         </div>
 
         {/* images */}
-        <div className="md:w-2/5 lg:w-1/2 flex justify-center">
+        <div className="md:w-2/5 lg:w-1/2">
           <img
             src={places}
             loading="lazy"
