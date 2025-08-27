@@ -5,6 +5,7 @@ import car from "@/assets/images/car.jpg";
 import flight from "@/assets/images/flight.jpg";
 import tour from "@/assets/images/tour.jpg";
 import hotel from "@/assets/images/hotel.jpg";
+import { Link } from "react-router-dom";
 
 export default function CategoriesHome() {
   const { categories, isLoading, isError } = useCategories();
@@ -27,7 +28,9 @@ export default function CategoriesHome() {
     <div className="mt-12 px-6 py-4 md:px-12 lg:px-32">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-xl md:text-2xl font-semibold text-gray-900">Categories</h2>
+        <h2 className="text-xl md:text-2xl font-semibold text-gray-900">
+          Categories
+        </h2>
       </div>
 
       {/* Grid */}
@@ -35,7 +38,12 @@ export default function CategoriesHome() {
         {categories.slice(0, 4).map((cat, i) => {
           const imageSrc = getCategoryImage(cat.title);
           return (
-            <div
+            <Link
+              to={`${
+                imageSrc == "/src/assets/images/hotel.jpg"
+                  ? "/Booking/hotel"
+                  : ""
+              }`}
               key={i}
               className="flex flex-col items-center text-center transition hover:scale-105"
             >
@@ -50,7 +58,7 @@ export default function CategoriesHome() {
               <h3 className="mt-3 text-sm md:text-base font-medium text-blue-800">
                 {cat.title}
               </h3>
-            </div>
+            </Link>
           );
         })}
       </div>

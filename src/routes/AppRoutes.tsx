@@ -28,6 +28,8 @@ export default function AppRoutes() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/filter" element={<FilterPage />} />
           <Route path="/filter-tours" element={<FilterTourResult />} />
+          {/* booking */}
+          <Route path="/booking/hotel" element={<HotelPage />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="welcome" element={<WelcomePage />} />
@@ -40,8 +42,6 @@ export default function AppRoutes() {
         </Route>
         {/* compare */}
         <Route path="/compare" element={<Compare />} />
-        {/* booking */}
-        <Route path="/booking/hotel" element={<HotelPage />} />
       </Routes>
     </Router>
   );
