@@ -29,6 +29,10 @@ export default function AppRoutes() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/filter" element={<FilterPage />} />
           <Route path="/filter-tours" element={<FilterTourResult />} />
+          {/* compare */}
+          <Route path="/compare" element={<Compare />} />
+          {/* booking */}
+          <Route path="/booking/hotel" element={<HotelPage />} />
         </Route>
         {/* End all app layout */}
         {/* Auth */}
@@ -41,10 +45,6 @@ export default function AppRoutes() {
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
-        {/* compare */}
-        <Route path="/compare" element={<Compare />} />
-        {/* booking */}
-        <Route path="/booking/hotel" element={<HotelPage />} />
       </Routes>
     </Router>
   );
