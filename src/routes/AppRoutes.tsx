@@ -1,3 +1,4 @@
+import Compare from "@/pages/Compare";
 import AppLayout from "@/components/Layouts/AppLayout";
 import AuthLayout from "@/components/Layouts/AuthLayout";
 import ForgetPassPage from "@/pages/Auth/ForgetPassPage";
@@ -7,11 +8,13 @@ import WelcomePage from "@/pages/Auth/WelcomePage";
 import ResetPasswordPage from "@/pages/Auth/ResetPasswordPage";
 import VerifyCodePage from "@/pages/Auth/VerifyCodePage";
 import FilterPage from "@/pages/FilterPages/FilterPage";
+import FilterTourResult from "@/pages/FilterPages/FilterToursResult";
 import HomePage from "@/pages/Home/HomePage";
 import SearchPage from "@/pages/SearchPages/SearchPage";
 import ScrollToTop from "@/utils/ScrollToTop";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import ResetSuccessPage from "@/pages/Auth/ResetSuccessPage";
+import HotelPage from "@/pages/Booking/Hotel/HotelPage";
 
 export default function AppRoutes() {
   return (
@@ -29,10 +32,15 @@ export default function AppRoutes() {
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignUpPage />} />
-          <Route path='forget-password' element={<ForgetPassPage />} />
-          <Route path='verify-code' element={<VerifyCodePage />} />
-          <Route path='reset-password' element={<ResetPasswordPage />} />
-          <Route path='reset-password-success' element={<ResetSuccessPage />} />
+          <Route path="forget-password" element={<ForgetPassPage />} />
+          <Route path="verify-code" element={<VerifyCodePage />} />
+          <Route path="reset-password" element={<ResetPasswordPage />} />
+          <Route path="reset-password-success" element={<ResetSuccessPage />} />
+          <Route path="/filter-tours" element={<FilterTourResult />} />
+          {/* compare */}
+          <Route path="/compare" element={<Compare />} />
+          {/* booking */}
+          <Route path="/booking/hotel" element={<HotelPage />} />
         </Route>
       </Routes>
     </Router>
