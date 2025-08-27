@@ -8,27 +8,27 @@
 
 @layer base {
   :root {
-    --background: #FFFFFF;
-    --foreground: #F3F4F6;
-    --compare-bg:#FAFAFA;
-    --card: #F4F4F4;
-    --card-foreground: #D1D5DB8F;
-    --primary: #1E429F;
-    --text:#1A56DB;
-    --primary-foreground: #EBF5FF;
-    --secondary:#4B5563;
-    --secondary-foreground: #A4CAFE;
-    --input: #6B7280;
-    --success:#31C48D;
-    --choose:#E5E7EB;
-    --danger:#F05252;
-    --shadow:#6F6F6F40;
-    --rate:#FCBA42;
-    --check:#1C64F2;
-    --popup:#1119288F;
-    --border:#D1D5DB;
-    --border-g1:#3F52B4;
-    --border-g2:#B22459;
+    --background: #ffffff;
+    --foreground: #f3f4f6;
+    --compare-bg: #fafafa;
+    --card: #f4f4f4;
+    --card-foreground: #d1d5db8f;
+    --primary: #1e429f;
+    --text: #1a56db;
+    --primary-foreground: #ebf5ff;
+    --secondary: #4b5563;
+    --secondary-foreground: #a4cafe;
+    --input: #6b7280;
+    --success: #31c48d;
+    --choose: #e5e7eb;
+    --danger: #f05252;
+    --shadow: #6f6f6f40;
+    --rate: #fcba42;
+    --check: #1c64f2;
+    --popup: #1119288f;
+    --border: #d1d5db;
+    --border-g1: #3f52b4;
+    --border-g2: #b22459;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
     --accent: 0 0% 96.1%;
@@ -43,7 +43,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -69,7 +69,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 @layer utilities {
@@ -102,7 +102,8 @@
     }
   }
 
-  .Toastify__toast {}
+  .Toastify__toast {
+  }
 
   .layout {
     @apply flex flex-col min-h-screen;
