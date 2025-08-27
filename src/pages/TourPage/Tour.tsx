@@ -5,6 +5,7 @@ import Gallery from "@/components/Tour/Gallery";
 import Reviews from "@/components/common/Reviews";
 import { useParams } from "react-router-dom";
 import useTour from "@/hooks/Tours/UseTour";
+import TourBooking from "@/components/Tour/TourBooking";
 
 function Tour() {
   const params = useParams()
@@ -23,6 +24,7 @@ function Tour() {
       <BestTimeVisit info="Spring (April - June) and autumn (September - October) are perfect times to visit Paris, with mild weather and fewer tourists."/>
       <Gallery images={tour.gallery}/>
       <Reviews/>
+      <TourBooking price={tour.price} tour_slot_id={tour.tour_slot_id} seats_count={tour.seats_count}/>
     </div>
   );
 }
