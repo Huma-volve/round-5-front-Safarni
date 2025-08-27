@@ -16,7 +16,10 @@ import { useState } from "react";
   ];
 
 
-export default function Gallery({images = fakeImages}) {
+export default function Gallery({images}:any) {
+
+  //fallback images array (temporary)
+  if (images.length === 0) images = fakeImages 
 
   const [visibleCount, setVisibleCount] = useState(6);
 
@@ -35,7 +38,7 @@ export default function Gallery({images = fakeImages}) {
 
       {/* Image grid */}
       <div className="grid grid-cols-2 sm:grid-cols-6 gap-3 my-3">
-        {images.slice(0, visibleCount).map((src, i) => (
+        {images.slice(0, visibleCount).map((src:string, i:number) => (
           <img
             key={i}
             src={src}

@@ -1,5 +1,5 @@
 function ActivityCard({ activity }: any) {
-  const { image, title, description } = activity;
+  const { image, name:title, description } = activity;
   return (
     <div className="flex-shrink-0 rounded-md overflow-hidden w-[45vw] sm:w-[25vw] md:w-[20vw]">
       {/* Image in square ratio */}

@@ -1,7 +1,7 @@
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import ActivityCard from "./ActivityCard";
 
-export const activities = [
+export const fakeActivities = [
 {
     title: "Morning Coffee at Central Cafe",
     description: "Start your day with freshly brewed coffee and pastries at the city's most popular cafe.",
@@ -29,14 +29,15 @@ export const activities = [
   }
 ];
 
-function TopActivities() {
+function TopActivities({activities}:any) {
+  if (activities.length === 0) activities = fakeActivities
   return (
     <div className="section-margin space-y-4">
       <h2 className="section-header">Top Activities</h2>
       <ScrollArea className="pb-4">
         <div className="flex w-max space-x-4">
-          {activities.map((activity, idx) => (
-            <ActivityCard key={idx} activity={activity} />
+          {activities.map((activity:any, i:number) => (
+            <ActivityCard key={i} activity={activity} />
           ))}
         </div>
         <ScrollBar orientation="horizontal" />
