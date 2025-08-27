@@ -48,7 +48,7 @@ export default function FilterToursResult() {
           className="border rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition"
         >
           <img
-            src={tour.image && nullimage}
+            src={tour.image === null ? nullimage : tour.image}
             alt={tour.title}
             className="w-full h-48 object-cover"
           />
