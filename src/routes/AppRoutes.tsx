@@ -15,6 +15,7 @@ import ScrollToTop from "@/utils/ScrollToTop";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import ResetSuccessPage from "@/pages/Auth/ResetSuccessPage";
 import HotelPage from "@/pages/Booking/Hotel/HotelPage";
+import NotFound from "@/pages/NotFound/NotFound";
 
 export default function AppRoutes() {
   return (
@@ -28,7 +29,13 @@ export default function AppRoutes() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/filter" element={<FilterPage />} />
           <Route path="/filter-tours" element={<FilterTourResult />} />
+        {/* compare */}
+        <Route path="/compare" element={<Compare />} />
+        {/* booking */}
+        <Route path="/booking/hotel" element={<HotelPage />} />
         </Route>
+        {/* End all app layout */}
+        {/* Auth */}
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="login" element={<LoginPage />} />
@@ -38,10 +45,9 @@ export default function AppRoutes() {
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
-        {/* compare */}
-        <Route path="/compare" element={<Compare />} />
-        {/* booking */}
-        <Route path="/booking/hotel" element={<HotelPage />} />
+        {/* End of Auth */}
+        {/* Not found */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

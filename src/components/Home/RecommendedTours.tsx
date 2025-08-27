@@ -39,7 +39,7 @@ export default function RecommendedTours() {
           >
             {/* image */}
             <img
-              src={tour.image && noimage}
+              src={tour.image === null ? noimage : tour.image}
               loading="lazy"
               alt={tour.title}
               className="w-full h-48 object-cover rounded-lg"
