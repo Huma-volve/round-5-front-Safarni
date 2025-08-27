@@ -23,9 +23,15 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response && error.response.status === 401) {
+    // Don't redirect for auth-related endpoints
+    // const authEndpoints = ['login', 'register', 'forgot-password', 'reset-password', 'otp'];
+    // const isAuthEndpoint = authEndpoints.some(endpoint => 
+    //   error.config?.url?.includes(endpoint)
+    // );
+    
+    if (error.response && error.response.status === 401 && !isAuthEndpoint) {
       console.error("Unauthorized, redirecting to login...");
-      window.location.href = "/login";
+      window.location.href = "/auth/login";
     }
     return Promise.reject(error);
   }
