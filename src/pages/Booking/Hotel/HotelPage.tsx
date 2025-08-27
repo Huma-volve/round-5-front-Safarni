@@ -34,6 +34,7 @@ function HotelPage() {
         <CardNearbyHotel />
         <CardNearbyHotel />
         <CardNearbyHotel />
+        <CardNearbyHotel />
       </div>
     </div>
   );

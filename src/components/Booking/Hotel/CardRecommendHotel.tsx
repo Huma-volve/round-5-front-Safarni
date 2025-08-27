@@ -1,10 +1,14 @@
 import ImgHotel from "@/assets/images/ImgHotel.png";
 import ImgStar from "@/assets/images/icons/ImgStar.svg";
 import ImgLocation from "@/assets/images/icons/Location.svg";
+import { Link } from "react-router-dom";
 function CardRecommendHotel() {
   return (
     <>
-      <div className="p-4 border border-gray-200 rounded-3xl">
+      <Link
+        to={`/booking/hotel/${1}`}
+        className="p-4 border border-gray-200 rounded-3xl shadow-[0px_0px_26.37px_0px_#6F6F6F40] hover:shadow-[0px_10px_30px_0px_#6F6F6F40] transition-shadow duration-300"
+      >
         <img
           src={ImgHotel}
           alt="Hotel"
@@ -26,7 +30,7 @@ function CardRecommendHotel() {
           <img src={ImgLocation} alt="Location" />
           <p>New York, USA</p>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

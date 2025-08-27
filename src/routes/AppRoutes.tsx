@@ -15,7 +15,8 @@ import ScrollToTop from "@/utils/ScrollToTop";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import ResetSuccessPage from "@/pages/Auth/ResetSuccessPage";
 import HotelPage from "@/pages/Booking/Hotel/HotelPage";
-import NotFound from "@/pages/NotFound/NotFound";
+import RoomHotelPage from "@/pages/Booking/Hotel/RoomHotelPage";
+import RoomDetailsHotelPage from "@/pages/Booking/Hotel/RoomDetailsHotelPage";
 
 export default function AppRoutes() {
   return (
@@ -29,10 +30,6 @@ export default function AppRoutes() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/filter" element={<FilterPage />} />
           <Route path="/filter-tours" element={<FilterTourResult />} />
-          {/* compare */}
-          <Route path="/compare" element={<Compare />} />
-          {/* booking */}
-          <Route path="/booking/hotel" element={<HotelPage />} />
         </Route>
         {/* End all app layout */}
         {/* Auth */}
@@ -44,6 +41,17 @@ export default function AppRoutes() {
           <Route path="verify-code" element={<VerifyCodePage />} />
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
+        </Route>
+        {/* compare */}
+        <Route path="/compare" element={<Compare />} />
+        {/* booking */}
+        <Route path="/booking" element={<AppLayout />}>
+          <Route path="hotel" element={<HotelPage />} />
+          <Route path="hotel/:hotelId" element={<RoomHotelPage />} />
+          <Route
+            path="hotel/:hotelId/room/:roomId"
+            element={<RoomDetailsHotelPage />}
+          />
         </Route>
       </Routes>
     </Router>
