@@ -1,37 +1,23 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
 /*
-interface HotelBooking {
-    roomId: string;
-    checkIn: string;
-    checkOut: string;
-    guests: number;
-}
 
-to update checkout data (don't forget to include the type of data):
-const { updateData } = useCheckoutContext<HotelBooking>();
+const { updateCheckout } = useCheckoutContext<HotelBooking>();
 
-updateData(
+updateCheckout(
     12345,                    
     "hotel",               
-    { 
-        roomId: "101",
-        checkIn: "2024-01-15", 
-        checkOut: "2024-01-17",
-        guests: 2
-    }
 );
 */
 
-type CheckoutDataType<T> = {
+type CheckoutDataType = {
   booking_id: number | null;
   booking_type: string | null;
-  data: T | null;
 };
 
 type CheckoutContextType<T> = {
-  checkoutData: CheckoutDataType<T>;
-  updateData: (booking_id: number, booking_type: string, data: T) => void;
+  checkoutData: CheckoutDataType;
+  updateCheckout: (booking_id: number, booking_type: string) => void;
   clearCheckout: () => void;
   isCheckoutEmpty: () => boolean;
 };
@@ -42,41 +28,36 @@ const CheckoutContext = createContext<CheckoutContextType<any> | undefined>(
 
 function AppCheckoutProvider<T>({ children }: { children: ReactNode }) {
   // Better initial state - all null means "no checkout in progress"
-  const [checkoutData, setCheckoutData] = useState<CheckoutDataType<T>>({
+  const [checkoutData, setCheckoutData] = useState<CheckoutDataType>({
     booking_id: null,
     booking_type: null,
-    data: null,
   });
 
-  const updateData = (booking_id: number, booking_type: string, data: T) => {
+  const updateCheckout = (booking_id: number, booking_type: string) => {
     setCheckoutData({
       booking_id,
       booking_type,
-      data,
     });
   };
 
-  // Add clear function for when checkout is cancelled/completed
+  // Clear function for when checkout is cancelled/completed
   const clearCheckout = () => {
     setCheckoutData({
       booking_id: null,
       booking_type: null,
-      data: null,
     });
   };
 
   // Add validation function
   const isCheckoutEmpty = () => {
     return (
-      checkoutData.booking_id === null &&
-      checkoutData.booking_type === null &&
-      checkoutData.data === null
+      checkoutData.booking_id === null && checkoutData.booking_type === null
     );
   };
 
   const contextValue: CheckoutContextType<T> = {
     checkoutData,
-    updateData,
+    updateCheckout,
     clearCheckout,
     isCheckoutEmpty,
   };

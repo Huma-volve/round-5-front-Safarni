@@ -10,12 +10,15 @@ type TourBookingType = {
 
 function TourBooking({ price, tour_slot_id, seats_count }: TourBookingType) {
   const {mutate, data, isPending, error} = UseBookTour()
-  const { updateData } = useCheckoutContext();
+  const { updateCheckout } = useCheckoutContext();
 
+  //pass the booking data to mutate to book a tour, onSuccess get the booking id from res, update the checkout context
   function handleTourBooking() {
-    mutate({tour_slot_id, seats_count})
-    updateData(data.id, "tour")
-    console.log(price, tour_slot_id, seats_count);
+    mutate({tour_slot_id, seats_count}, {
+      onSuccess(res) {
+        updateCheckout(res.data.id, "tour")
+      }
+    })
   }
 
   return (

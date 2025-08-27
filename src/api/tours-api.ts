@@ -3,7 +3,6 @@ import axiosInstance from "@/lib/axios-instance";
 export async function getTourDetails(id: number) {
   const { data } = await axiosInstance.get(`tours/${id}`);
   const tourData = data.data;
-  console.log(tourData);
 
   const tour = {
     hero: {
@@ -27,5 +26,5 @@ export async function getTourDetails(id: number) {
 
 export async function bookTour(bookingDetails:any) {
     const { data } = await axiosInstance.post("tour-bookings", bookingDetails);
-    console.log(data);
+    return data
 }
