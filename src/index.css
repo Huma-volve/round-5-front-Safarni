@@ -9,12 +9,12 @@
 @layer base {
   :root {
     --background: #ffffff;
-    --foreground: #f3f4f6;
+    --foreground: #000000;
     --compare-bg: #fafafa;
     --card: #f4f4f4;
     --card-foreground: #d1d5db8f;
     --primary: #1e429f;
-    --text: #1a56db;
+    --text: #000000;
     --primary-foreground: #ebf5ff;
     --secondary: #4b5563;
     --secondary-foreground: #a4cafe;
@@ -179,8 +179,6 @@
     @apply bg-background text-foreground;
     font-family: "Poppins", sans-serif;
   }
-
-  
 }
 
 @layer utilities {
@@ -215,14 +213,13 @@
   .blue-button {
     @apply bg-[#1E429F] text-white py-5 px-4 rounded text-xl;
   }
-  .blue-button-hover{
+  .blue-button-hover {
     @apply hover:bg-[#153E75];
   }
   .white-button {
     @apply bg-white text-[#1E429F] py-5 px-4 rounded border border-[#1E429F] text-xl;
   }
-  .white-button-hover{
+  .white-button-hover {
     @apply hover:bg-gray-200;
-    
   }
 }
