@@ -2,12 +2,13 @@ import { useRecommendedTours } from "@/hooks/RecommendedTours/useRecommedndTours
 import { useState } from "react";
 import { MapPin, Star } from "lucide-react";
 import noimage from "@/assets/images/noimage-home.png";
+import Loading from "../common/Loading";
 
 export default function RecommendedTours() {
   const [showAll, setShowAll] = useState(false);
   const { tours, isLoading, isError } = useRecommendedTours();
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   if (isError) return <p>Something went wrong!</p>;
 
   const displayedTours = showAll ? tours : tours.slice(0, 3);
@@ -38,7 +39,7 @@ export default function RecommendedTours() {
           >
             {/* image */}
             <img
-              src={tour.image && noimage}
+              src={tour.image === null ? noimage : tour.image}
               loading="lazy"
               alt={tour.title}
               className="w-full h-48 object-cover rounded-lg"
@@ -47,7 +48,7 @@ export default function RecommendedTours() {
             <div className="mt-3 flex flex-col flex-1">
               {/* title + rating */}
               <div className="flex items-center justify-between">
-                <h3 className="font-semibold text-sm md:text-base line-clamp-1">
+                <h3 className="text-gray-950 font-semibold text-sm md:text-base line-clamp-1">
                   {tour.title}
                 </h3>
                 <div className="flex items-center text-yellow-500 text-sm">
