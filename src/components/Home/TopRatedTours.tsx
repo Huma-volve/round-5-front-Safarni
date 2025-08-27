@@ -39,7 +39,7 @@ export default function TopRatedTours() {
           >
             {/* left image */}
             <img
-              src={tour.image && noimage}
+              src={tour.image === null  ? noimage : tour.image}
               alt={tour.title}
               loading="lazy"
               className="w-24 h-24 md:w-28 md:h-28 object-cover rounded-lg flex-shrink-0"

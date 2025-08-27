@@ -18,6 +18,9 @@ import FilterPage from "@/pages/FilterPages/FilterPage";
 import FilterToursResult from "@/pages/FilterPages/FilterToursResult";
 import MapSearchCompare from "@/pages/map/Map";
 import MapView from "@/components/map/MapView";
+import RoomHotelPage from "@/pages/Booking/Hotel/RoomHotelPage";
+import RoomDetailsHotelPage from "@/pages/Booking/Hotel/RoomDetailsHotelPage";
+
 
 export default function AppRoutes() {
   return (
@@ -30,11 +33,29 @@ export default function AppRoutes() {
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/filter" element={<FilterPage />} />
+
           <Route path="/filter-tours" element={<FilterToursResult />} />
           <Route path="/compare" element={<Compare />} />
         </Route>
           <Route path="/maps" element={<MapSearchCompare />} />
           <Route path="/map" element={<MapView />} />
+
+          <Route path="/filter-tours" element={<FilterToursResult />} />
+        {/* compare */}
+        <Route path="/compare" element={<Compare />} />
+        {/* booking */}
+        <Route path="/booking">
+          <Route path="hotel" element={<HotelPage />} />
+          <Route path="hotel/:hotelId" element={<RoomHotelPage />} />
+          <Route
+            path="hotel/:hotelId/room/:roomId"
+            element={<RoomDetailsHotelPage />}
+          />
+        </Route>
+
+        {/* End all app layout */}
+        {/* Auth */}
+
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="login" element={<LoginPage />} />
@@ -44,9 +65,11 @@ export default function AppRoutes() {
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
- 
+
         {/* booking */}
         <Route path="/booking/hotel" element={<HotelPage />} />
+
+
       </Routes>
     </Router>
   );
