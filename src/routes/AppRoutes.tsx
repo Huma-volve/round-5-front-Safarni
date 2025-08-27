@@ -1,4 +1,3 @@
-
 import Compare from "@/pages/Compare";
 import AppLayout from "@/components/Layouts/AppLayout";
 import AuthLayout from "@/components/Layouts/AuthLayout";
@@ -21,7 +20,6 @@ import MapView from "@/components/map/MapView";
 import RoomHotelPage from "@/pages/Booking/Hotel/RoomHotelPage";
 import RoomDetailsHotelPage from "@/pages/Booking/Hotel/RoomDetailsHotelPage";
 
-
 export default function AppRoutes() {
   return (
     <Router>
@@ -37,14 +35,14 @@ export default function AppRoutes() {
           <Route path="/filter-tours" element={<FilterToursResult />} />
           <Route path="/compare" element={<Compare />} />
         </Route>
-          <Route path="/maps" element={<MapSearchCompare />} />
-          <Route path="/map" element={<MapView />} />
+        <Route path="/maps" element={<MapSearchCompare />} />
+        <Route path="/map" element={<MapView />} />
 
-          <Route path="/filter-tours" element={<FilterToursResult />} />
+        <Route path="/filter-tours" element={<FilterToursResult />} />
         {/* compare */}
         <Route path="/compare" element={<Compare />} />
         {/* booking */}
-        <Route path="/booking">
+        <Route path="/booking" element={<AppLayout />}>
           <Route path="hotel" element={<HotelPage />} />
           <Route path="hotel/:hotelId" element={<RoomHotelPage />} />
           <Route
@@ -65,13 +63,7 @@ export default function AppRoutes() {
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
-
-        {/* booking */}
-        <Route path="/booking/hotel" element={<HotelPage />} />
-
-
       </Routes>
     </Router>
   );
 }
-
