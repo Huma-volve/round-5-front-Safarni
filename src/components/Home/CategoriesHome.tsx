@@ -41,8 +41,12 @@ export default function CategoriesHome() {
             <Link
               to={`${
                 imageSrc == "/src/assets/images/hotel.jpg"
-                  ? "/Booking/hotel"
-                  : ""
+                  ? "/hotel"
+                  : imageSrc == "/src/assets/images/car.jpg"
+                  ? "/car"
+                  : imageSrc == "/src/assets/images/tour.jpg"
+                  ? "/tours"
+                  : "/flight"
               }`}
               key={i}
               className="flex flex-col items-center text-center transition hover:scale-105"
