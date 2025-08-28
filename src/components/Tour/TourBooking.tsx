@@ -1,6 +1,6 @@
 import { useCheckoutContext } from "@/context/AppCheckoutProvider";
 import { Button } from "../ui/button";
-import UseBookTour from "@/hooks/Tours/UseTourBooking";
+import UseBookTour from "@/hooks/Tours/useTourBooking";
 
 type TourBookingType = {
   price: number,
@@ -22,11 +22,11 @@ function TourBooking({ price, tour_slot_id, seats_count }: TourBookingType) {
   }
 
   return (
-    <div>
-      <p>
-        Total Price is: <span>{price}</span> <span>/night</span>
+    <div className="flex justify-around py-12 px-6 shadow-xl shadow-shadow mt-3">
+      <p className="font-bold">
+        Total Price is: <span className="text-primary text-lg">{price}$</span> <span>/night</span>
       </p>
-      <Button onClick={handleTourBooking}>Book Now</Button>
+      <Button className="px-36" onClick={handleTourBooking}>Book Now</Button>
     </div>
   );
 }
