@@ -7,7 +7,8 @@ import { Button } from "../ui/button";
 import useSignUp from "@/hooks/Auth/useSignUp";
 import { AxiosError } from "axios";
 import { GoogleLogin } from "@react-oauth/google";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
+import {Link} from "react-router-dom";
 
 // عرف الـ type بتاع الخطأ
 type ApiErrorResponse = {
@@ -193,6 +194,12 @@ export default function SignUpForm() {
           </Button>
         </div>
       </form>
+      <div className="w-full relative">
+        <hr />
+        <p className="absolute left-1/2 transform -translate-x-1/2 -top-2 bg-white px-2 text-sm text-gray-500">
+          Or
+        </p>
+      </div>
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           if (credentialResponse.credential) {
@@ -206,6 +213,12 @@ export default function SignUpForm() {
           console.log("Login Failed");
         }}
       />
+      <div className="text-sm text-gray-500">
+        Already have an account?{" "}
+        <Link to="/auth/login" className="text-blue-500 hover:underline">
+          Log In
+        </Link>
+      </div>
     </div>
   );
 }

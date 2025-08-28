@@ -83,6 +83,12 @@ export default function LoginForm() {
           </Button>
         </div>
       </form>
+      <div className="w-full relative">
+        <hr />
+        <p className="absolute left-1/2 transform -translate-x-1/2 -top-2 bg-white px-2 text-sm text-gray-500">
+          Or
+        </p>
+      </div>
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           if (credentialResponse.credential) {
@@ -96,6 +102,12 @@ export default function LoginForm() {
           console.log("Login Failed");
         }}
       />
+      <div className="text-sm text-gray-500">
+        Don't have an account?{" "}
+        <Link to="/auth/signup" className="text-blue-500 hover:underline">
+          Sign Up
+        </Link>
+      </div>
     </div>
   );
 }
