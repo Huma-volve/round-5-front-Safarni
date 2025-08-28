@@ -21,6 +21,9 @@ import RoomHotelPage from "@/pages/Booking/Hotel/RoomHotelPage";
 import RoomDetailsHotelPage from "@/pages/Booking/Hotel/RoomDetailsHotelPage";
 import Tours from "@/pages/TourPage/Tours";
 import Tour from "@/pages/TourPage/Tour";
+import AppPayment from "@/pages/Payment/AppPayment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function AppRoutes() {
   return (
@@ -53,8 +56,14 @@ export default function AppRoutes() {
               path="hotel/:hotelId/room/:roomId"
               element={<RoomDetailsHotelPage />}
             />
-          </Route>
+
+            {/* //this approach is temporary until checkout mechanism is ready */}
+              <Route path="payment" element={<Elements stripe={stripePromise}><AppPayment booking_id="7" clientSecret="pi_3S0XIT00Xq5cUHDc0gTeU98Z_secret_53dqpgxrvDaBBxX2vEhjtxGmh"/></Elements>}/>
         </Route>
+
+
+
+
 
         {/* Auth */}
         <Route path="/auth" element={<AuthLayout />}>
@@ -66,8 +75,8 @@ export default function AppRoutes() {
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
-        <Route path="/maps" element={<MapSearchCompare />} />
-        <Route path="/map" element={<MapView />} />
+          <Route path="/maps" element={<MapSearchCompare />} />
+          <Route path="/map" element={<MapView />} />
       </Routes>
     </Router>
   );
