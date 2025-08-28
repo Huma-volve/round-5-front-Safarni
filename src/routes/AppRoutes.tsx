@@ -21,8 +21,13 @@ import RoomHotelPage from "@/pages/Booking/Hotel/RoomHotelPage";
 import RoomDetailsHotelPage from "@/pages/Booking/Hotel/RoomDetailsHotelPage";
 import Tours from "@/pages/TourPage/Tours";
 import Tour from "@/pages/TourPage/Tour";
+import AppPayment from "@/pages/Payment/AppPayment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function AppRoutes() {
+  const stripePromise = loadStripe("pk_test_XXXXXXXXXXXXXXXX");
+
   return (
     <Router>
       <ScrollToTop />
@@ -53,7 +58,6 @@ export default function AppRoutes() {
               path="hotel/:hotelId/room/:roomId"
               element={<RoomDetailsHotelPage />}
             />
-          </Route>
         </Route>
 
         {/* Auth */}

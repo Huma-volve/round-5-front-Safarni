@@ -19,7 +19,7 @@ export default function FilterToursResult() {
      {/* Mobile Header */}
       <div className="md:hidden">
         <div className="relative flex items-center justify-center mb-4">
-          <Link to="/filter" className="absolute left-0">
+          <Link to="/" className="absolute left-0">
             <ChevronLeft
               size={38}
               className="bg-gray-200 rounded-full p-2 text-gray-800"
@@ -31,7 +31,7 @@ export default function FilterToursResult() {
 
       {/* Laptop Header */}
       <div className="hidden md:flex items-center mb-4">
-        <Link to="/filter">
+        <Link to="/">
           <ChevronLeft
             size={42}
             className="bg-gray-200 rounded-full px-2 py-2 text-gray-800"
