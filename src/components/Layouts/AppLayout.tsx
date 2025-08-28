@@ -7,9 +7,9 @@ function AppLayout() {
     <AppCheckoutProvider>
       <div className="layout">
         <AppNavBar />
-        <main>
+        <mainS>
           <Outlet />
-        </main>
+        </mainS>
       </div>
     </AppCheckoutProvider>
   );
