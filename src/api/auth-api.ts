@@ -46,9 +46,9 @@ export async function signUp(data: signUpData) {
     const axiosError = error as AxiosError<{ message?: string }>;
     const errorMessage =
       axiosError.response?.data?.message || "Registration failed";
-      toast.error(errorMessage);
-      console.log(error);
-      throw error;
+    toast.error(errorMessage);
+    console.log(error);
+    throw error;
   }
 }
 
@@ -66,9 +66,9 @@ export async function forgetPassword(data: { email: string }) {
     const axiosError = error as AxiosError<{ message?: string }>;
     const errorMessage =
       axiosError.response?.data?.message || "Failed to send email";
-      toast.error(errorMessage);
-      console.log(error);
-      throw error;
+    toast.error(errorMessage);
+    console.log(error);
+    throw error;
   }
 }
 
@@ -85,9 +85,9 @@ export async function resetPassword(data: resetPasswordData) {
     const axiosError = error as AxiosError<{ message?: string }>;
     const errorMessage =
       axiosError.response?.data?.message || "Failed to reset password";
-      toast.error(errorMessage);
-      console.log(error);
-      throw error;
+    toast.error(errorMessage);
+    console.log(error);
+    throw error;
   }
 }
 
@@ -104,9 +104,9 @@ export async function verifyCode(data: { email: string; otp: string }) {
     const axiosError = error as AxiosError<{ message?: string }>;
     const errorMessage =
       axiosError.response?.data?.message || "Failed to verify code";
-      toast.error(errorMessage);
-      console.log(error);
-      throw error;
+    toast.error(errorMessage);
+    console.log(error);
+    throw error;
   }
 }
 
@@ -119,15 +119,15 @@ export async function logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("name");
       localStorage.removeItem("email");
-      toast.success(response?.data?.message ||"Loged Out successfully");
+      toast.success(response?.data?.message || "Loged Out successfully");
     }
     return response;
   } catch (error) {
     const axiosError = error as AxiosError<{ message?: string }>;
     const errorMessage =
       axiosError.response?.data?.message || "Failed to Logout";
-      toast.error(errorMessage);
-      console.log(error);
-      throw error;
+    toast.error(errorMessage);
+    console.log(error);
+    throw error;
   }
 }

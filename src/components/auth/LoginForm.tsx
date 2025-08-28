@@ -6,6 +6,8 @@ import { loginSchema } from "@/utils/AuthSchema";
 import { Button } from "../ui/button";
 import useLogin from "@/hooks/Auth/useLogin";
 import { Link } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 export default function LoginForm() {
   const { mutate: login, isPending } = useLogin();
@@ -81,6 +83,31 @@ export default function LoginForm() {
           </Button>
         </div>
       </form>
+      <div className="w-full relative">
+        <hr />
+        <p className="absolute left-1/2 transform -translate-x-1/2 -top-2 bg-white px-2 text-sm text-gray-500">
+          Or
+        </p>
+      </div>
+      <GoogleLogin
+        onSuccess={(credentialResponse) => {
+          if (credentialResponse.credential) {
+            const user = jwtDecode(credentialResponse.credential);
+            console.log(user);
+          } else {
+            console.log("No credential received from Google.");
+          }
+        }}
+        onError={() => {
+          console.log("Login Failed");
+        }}
+      />
+      <div className="text-sm text-gray-500">
+        Don't have an account?{" "}
+        <Link to="/auth/signup" className="text-blue-500 hover:underline">
+          Sign Up
+        </Link>
+      </div>
     </div>
   );
 }
