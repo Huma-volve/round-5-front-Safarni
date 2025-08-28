@@ -18,8 +18,10 @@ export default function AppNavBar() {
   return (
     <>
       {/* Top Navbar (Desktop / Tablet) */}
-      <div className="w-full bg-white px-32 fixed md:px-12 sm:px-6 py-4 flex justify-between items-center">
-        {/* logo */}
+      <div className="fixed top-0 left-0 right-0 w-full bg-white py-4 
+                px-6 sm:px-12 md:px-32 
+                hidden md:flex justify-between items-center z-50">
+ {/* logo */}
         <Link to="/">
           <div className="hidden md:flex flex-col items-center">
             <img src={navicon} alt="safarni icon" className="w-10 md:w-12" />

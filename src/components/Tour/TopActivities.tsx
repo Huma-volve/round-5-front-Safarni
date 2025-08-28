@@ -5,7 +5,7 @@ export const fakeActivities = [
 {
     title: "Morning Coffee at Central Cafe",
     description: "Start your day with freshly brewed coffee and pastries at the city's most popular cafe.",
-    image: "https://picsum.photos/id/1015/600/400"
+    image: "https://picsum.photos/id/1011/600/400"
   },
   {
     title: "Walk in the City Park",

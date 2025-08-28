@@ -7,7 +7,7 @@ function AppLayout() {
     <AppCheckoutProvider>
       <div className="layout">
         <AppNavBar />
-        <main className="flex-1 flex flex-col justify-center">
+        <main className="flex-1 flex flex-col mt-2 md:mt-24">
           <Outlet />
         </main>
       </div>
