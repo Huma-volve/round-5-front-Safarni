@@ -19,13 +19,14 @@ import MapSearchCompare from "@/pages/map/Map";
 import MapView from "@/components/map/MapView";
 import RoomHotelPage from "@/pages/Booking/Hotel/RoomHotelPage";
 import RoomDetailsHotelPage from "@/pages/Booking/Hotel/RoomDetailsHotelPage";
+import Tours from "@/pages/TourPage/Tours";
+import Tour from "@/pages/TourPage/Tour";
 
 export default function AppRoutes() {
   return (
     <Router>
       <ScrollToTop />
       <Routes>
-        {/* Layout for all app */}
         <Route element={<AppLayout />}>
           {/* home */}
           <Route path="/" element={<HomePage />} />
@@ -34,26 +35,28 @@ export default function AppRoutes() {
 
           <Route path="/filter-tours" element={<FilterToursResult />} />
           <Route path="/compare" element={<Compare />} />
-        </Route>
-        <Route path="/maps" element={<MapSearchCompare />} />
-        <Route path="/map" element={<MapView />} />
 
-        <Route path="/filter-tours" element={<FilterToursResult />} />
-        {/* compare */}
-        <Route path="/compare" element={<Compare />} />
-        {/* booking */}
-        <Route path="/booking" element={<AppLayout />}>
-          <Route path="hotel" element={<HotelPage />} />
-          <Route path="hotel/:hotelId" element={<RoomHotelPage />} />
-          <Route
-            path="hotel/:hotelId/room/:roomId"
-            element={<RoomDetailsHotelPage />}
-          />
+          <Route path="/tours" element={<Tours />} />
+          <Route path="/tours/:id" element={<Tour />} />
+
+          <Route path="/maps" element={<MapSearchCompare />} />
+          <Route path="/map" element={<MapView />} />
+
+          <Route path="/filter-tours" element={<FilterToursResult />} />
+
+          {/* compare */}
+          <Route path="/compare" element={<Compare />} />
+
+          {/* booking */}
+            <Route path="hotel" element={<HotelPage />} />
+            <Route path="hotel/:hotelId" element={<RoomHotelPage />} />
+            <Route
+              path="hotel/:hotelId/room/:roomId"
+              element={<RoomDetailsHotelPage />}
+            />
         </Route>
 
-        {/* End all app layout */}
         {/* Auth */}
-
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="welcome" element={<WelcomePage />} />
           <Route path="login" element={<LoginPage />} />
