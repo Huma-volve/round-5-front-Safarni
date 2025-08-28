@@ -14,6 +14,6 @@ export async function fetchRecommendedTours(): Promise<RecommendedTourResponse[]
 
 // top rated
 export async function fetchTopRatedTours(): Promise<RecommendedTourResponse[]> {
-  const { data } = await axiosInstance.get("top-rated-tours");
+  const { data } = await axiosInstance.get("most-viewed-tours");
   return data.data; 
 }
