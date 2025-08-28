@@ -50,6 +50,7 @@ export default function RoomImageSection() {
                 <img
                   src={`${src}?w=200&h=120`}
                   alt={`Thumbnail ${i}`}
+                  loading="lazy"
                   className="w-full h-20 object-cover rounded-md cursor-pointer border-2 border-white shadow-md"
                 />
               </SwiperSlide>

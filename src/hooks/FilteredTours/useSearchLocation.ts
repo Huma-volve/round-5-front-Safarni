@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import type { AxiosError } from "axios";
 import { fetchLocations } from "@/api/search-location-api";
-import { LocationResponse } from "@/lib/types";
+// import { LocationResponse } from "@/lib/types";
 
 export function useSearchLocation(key: string = "") {
   const {
@@ -9,7 +8,7 @@ export function useSearchLocation(key: string = "") {
     isLoading,
     isError,
     error,
-  } = useQuery<LocationResponse[], AxiosError>({
+  } = useQuery({
     queryKey: ["locations", key],
     queryFn: () => fetchLocations(key),
   });

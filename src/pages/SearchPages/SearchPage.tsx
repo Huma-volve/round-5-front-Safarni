@@ -11,7 +11,6 @@ export default function SearchPage() {
   const { locations, isLoading, isError } = useSearchLocation(search);
   const navigate = useNavigate();
  
-  if (isLoading) return <Loading />;
   if (isError) return <p className="text-red-500">Something went wrong!</p>;
 
   return (
@@ -37,6 +36,7 @@ export default function SearchPage() {
             placeholder="Search destinations, tours..."
             className="w-full border-none outline-none px-3 text-sm"
             onChange={(e) => setSearch(e.target.value)}
+            value={search}
           />
         </div>
       </div>
@@ -55,18 +55,21 @@ export default function SearchPage() {
             type="search"
             placeholder="Search destinations, tours..."
             className="w-full border-none outline-none px-3"
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
       </div>
 
       {/* Locations List */}
-      <div className="flex flex-col gap-4 mt-8">
-        {locations.map((loc) => (
+      {
+      isLoading ? <Loading /> :
+      <div className="flex flex-col gap-4 mb-14 mt-8">
+        {locations.map((loc , index) => (
           <div
-            key={loc.id}
+            key={index}
             className="flex items-center gap-4 w-[95%] cursor-pointer p-2 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition hover:scale-[1.01]"
-            onClick={() => navigate(`/filter-tours?location=${loc.name}`)}
+            onClick={() => navigate(`/filter-tours?location=${loc}`)}
           >
             <img
               src={locationImg}
@@ -74,11 +77,12 @@ export default function SearchPage() {
               className="w-20 h-20 rounded-lg object-cover"
             />
             <h3 className="text-base md:text-lg font-semibold text-blue-900">
-              {loc.name}
+              {loc}
             </h3>
           </div>
         ))}
       </div>
+      }
     </div>
   );
 }
