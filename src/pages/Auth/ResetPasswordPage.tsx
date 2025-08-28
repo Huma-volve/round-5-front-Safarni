@@ -1,16 +1,16 @@
-import resetImg from '@/assets/images/forget-img.png';
+import LoginAnimation from "@/assets/animations/Login.json";
 import ResetPasswordForm from "@/components/auth/ResetPasswordForm";
+import Lottie from "lottie-react";
 
 export default function ResetPasswordPage() {
   return (
     <div className="flex gap-3 items-center">
-      <div
-        className="hidden md:flex w-[45%] h-[572px] bg-contain bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${resetImg})` }}
+      <Lottie
+        animationData={LoginAnimation}
+        loop={true}
+        style={{ width: "45%" }}
       />
       <ResetPasswordForm />
     </div>
   );
 }
-
-

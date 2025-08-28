@@ -1,14 +1,17 @@
-import forgetImg from "@/assets/images/forget-img.png";
+import EmailAnimation from "@/assets/animations/Sent_Mail.json";
 import ForgetForm from "@/components/auth/ForgetForm";
+import Lottie from "lottie-react";
 
 export default function ForgetPassPage() {
   return (
-        <div className="flex gap-3 items-center">
-      <div
-        className="hidden md:flex w-[45%] h-[572px] bg-contain bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${forgetImg})` }}
+    <div className="flex gap-3 items-center">
+      <Lottie
+        animationData={EmailAnimation}
+        loop={true}
+        style={{ width: "45%", height: "23rem" }}
+        className="hidden md:flex"
       />
       <ForgetForm />
     </div>
-  )
+  );
 }
