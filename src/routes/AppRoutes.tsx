@@ -58,7 +58,7 @@ export default function AppRoutes() {
               element={<RoomDetailsHotelPage />}
             />
 
-            //this approach is temporary until checkout mechanism is ready
+            {/* //this approach is temporary until checkout mechanism is ready */}
               <Route path="payment" element={<Elements stripe={stripePromise}><AppPayment booking_id="7" clientSecret="pi_3S0XIT00Xq5cUHDc0gTeU98Z_secret_53dqpgxrvDaBBxX2vEhjtxGmh"/></Elements>}/>
         </Route>
 
