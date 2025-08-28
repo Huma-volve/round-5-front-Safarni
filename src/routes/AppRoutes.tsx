@@ -39,19 +39,21 @@ export default function AppRoutes() {
           <Route path="/tours" element={<Tours />} />
           <Route path="/tours/:id" element={<Tour />} />
 
-
           <Route path="/filter-tours" element={<FilterToursResult />} />
 
           {/* compare */}
           <Route path="/compare" element={<Compare />} />
 
           {/* booking */}
+          <Route path="/booking">
+            {/* hotel booking */}
             <Route path="hotel" element={<HotelPage />} />
-            <Route path="/hotel/:hotelId" element={<RoomHotelPage />} />
+            <Route path="hotel/:hotelId" element={<RoomHotelPage />} />
             <Route
               path="hotel/:hotelId/room/:roomId"
               element={<RoomDetailsHotelPage />}
             />
+          </Route>
         </Route>
 
         {/* Auth */}
@@ -64,8 +66,8 @@ export default function AppRoutes() {
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
-          <Route path="/maps" element={<MapSearchCompare />} />
-          <Route path="/map" element={<MapView />} />
+        <Route path="/maps" element={<MapSearchCompare />} />
+        <Route path="/map" element={<MapView />} />
       </Routes>
     </Router>
   );

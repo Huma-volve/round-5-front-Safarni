@@ -2,6 +2,12 @@ import EditIcon from "@/assets/images/icons/EditIcon.svg";
 import SearchIcon from "@/assets/images/icons/SearchIcon.svg";
 import ImgStar from "@/assets/images/icons/ImgStar.svg";
 import ImgNotFound from "@/assets/images/noimage-home.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { reviews } from "@/data/BookingHotel";
 
 function RoomReview() {
   return (
@@ -26,32 +32,45 @@ function RoomReview() {
         />
       </div>
       <div className="my-7">
-        <div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full overflow-hidden">
-                <img
-                  src={ImgNotFound}
-                  alt="user review"
-                  className="w-full h-full object-cover"
-                />
+        <Swiper
+          modules={[Navigation, Pagination]}
+          pagination={{ clickable: true }}
+          spaceBetween={20}
+          slidesPerView={1}
+          className="w-full max-w-xs 2xl:max-w-3xl xl:max-w-xl mx-auto"
+        >
+          {reviews?.map((review) => (
+            <SwiperSlide key={review.id}>
+              <div className="p-4 border h-40 rounded-xl shadow-md bg-white">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full overflow-hidden">
+                      <img
+                        src={review.avatar}
+                        alt={review.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <p className="font-medium">{review.name}</p>
+                  </div>
+                  <p className="text-sm text-gray-500">{review.time}</p>
+                </div>
+
+                {/* ImgStar */}
+                <div className="flex gap-1 mt-2">
+                  {Array.from({ length: review.rating }).map((_, i) => (
+                    <img key={i} src={ImgStar} alt="star" className="w-4 h-4" />
+                  ))}
+                </div>
+
+                {/* comment */}
+                <p className="my-3 text-gray-700">{review.comment}</p>
               </div>
-              <p>Dale Thiel</p>
-            </div>
-            <p>11 months ago</p>
-          </div>
-          <div className="flex gap-1">
-            <img className="mt-2" src={ImgStar} alt="ImgStar" />
-            <img className="mt-2" src={ImgStar} alt="ImgStar" />
-            <img className="mt-2" src={ImgStar} alt="ImgStar" />
-          </div>
-          <p className="my-4 ">
-            I really enjoyed my stay—the room was clean, the staff were
-            friendly, and everything I needed was nearby.
-          </p>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
         <div>
-          <p className="text-xl">
+          <p className="text-xl mt-7">
             Total price :{" "}
             <span className="text-[--primary] text-2xl">$150.00</span>/night
           </p>

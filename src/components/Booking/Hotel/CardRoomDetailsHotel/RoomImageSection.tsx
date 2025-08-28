@@ -17,7 +17,7 @@ export default function RoomImageSection() {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
   return (
-    <Card className="w-full max-w-xs 2xl:max-w-2xl mx-auto shadow-xl rounded-2xl">
+    <Card className="w-full max-w-xs 2xl:max-w-2xl xl:max-w-xl mx-auto shadow-xl rounded-2xl">
       <CardContent className="p-0 relative">
         {/* Large image */}
         <Swiper
