@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import navicon from "@/assets/images/icons/safarni-navicon.png";
 import {
   Search,
@@ -14,6 +14,9 @@ import profileicon from "@/assets/images/icons/avatar-navicon.jpg";
 export default function AppNavBar() {
   const token = localStorage.getItem("token");
   const isAuthenticated = !!token;
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === "/auth/login";
 
   return (
     <>
@@ -21,7 +24,7 @@ export default function AppNavBar() {
       <div className="fixed top-0 left-0 right-0 w-full bg-white py-4 
                 px-6 sm:px-12 md:px-32 
                 hidden md:flex justify-between items-center z-50">
- {/* logo */}
+        {/* logo */}
         <Link to="/">
           <div className="hidden md:flex flex-col items-center">
             <img src={navicon} alt="safarni icon" className="w-10 md:w-12" />
@@ -87,10 +90,10 @@ export default function AppNavBar() {
             </>
           ) : (
             <Link
-              to="/auth/login"
+              to={isLoginPage ? "/auth/signup" : "/auth/login"}
               className="px-4 py-2 bg-[#1E429F] text-white rounded-lg text-sm font-medium hover:bg-[#16367A] transition"
             >
-              Login
+              {isLoginPage ? "Sign up" : "Login"}
             </Link>
           )}
         </div>
@@ -150,11 +153,11 @@ export default function AppNavBar() {
           </>
         ) : (
           <NavLink
-            to="/auth/login"
+            to={isLoginPage ? "/auth/signup" : "/auth/login"}
             className="flex flex-col items-center text-xs text-gray-600"
           >
             <LogIn size={20} />
-            <span>Login</span>
+            <span>{isLoginPage ? "Sign up" : "Login"}</span>
           </NavLink>
         )}
       </div>
