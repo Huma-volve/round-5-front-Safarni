@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function CardRoomHotel() {
   return (
     <Link
-      to={`/hotel/${1}/room/${1}`}
+      to={`/booking/hotel/${1}/room/${1}`}
       className="p-4 border border-gray-200 rounded-3xl shadow-[0px_0px_26.37px_0px_#6F6F6F40] hover:shadow-[0px_10px_30px_0px_#6F6F6F40] transition-shadow duration-300"
     >
       <img

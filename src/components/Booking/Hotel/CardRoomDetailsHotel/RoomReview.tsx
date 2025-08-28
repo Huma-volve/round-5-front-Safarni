@@ -9,12 +9,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { reviews } from "@/data/BookingHotel";
 
-function RoomReview() {
+function RoomReview({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
   return (
     <div>
       <div className="flex justify-between items-center my-7 font-medium">
         <div className="text-xl">add review</div>
-        <div className="flex items-center cursor-pointer">
+        <div
+          onClick={() => setActiveTab("addReview")}
+          className="flex items-center cursor-pointer"
+        >
           <img src={EditIcon} alt="add review" className="mr-2" />{" "}
           <span className="text-[--primary] text-md">add review</span>
         </div>
@@ -41,7 +44,7 @@ function RoomReview() {
         >
           {reviews?.map((review) => (
             <SwiperSlide key={review.id}>
-              <div className="p-4 border h-40 rounded-xl shadow-md bg-white">
+              <div className="p-4 border rounded-xl shadow-md bg-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full overflow-hidden">

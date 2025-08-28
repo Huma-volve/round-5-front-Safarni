@@ -3,6 +3,7 @@ import ImgStar from "@/assets/images/icons/ImgStar.svg";
 import RoomAbout from "./RoomAbout";
 import RoomGallery from "./RoomGallery";
 import RoomReview from "./RoomReview";
+import RoomAddReview from "./RoomAddReview";
 
 function RoomHeader() {
   const [activeTab, setActiveTab] = useState("about");
@@ -25,40 +26,44 @@ function RoomHeader() {
             </h2>
             <p className="text-[--input]">1012 oscean avanue, New Yourk ,USA</p>
           </div>
-          <ul className="flex justify-between border-b gap-10 text-lg text-[--muted]">
-            <li
-              className={`${
-                activeTab === "about"
-                  ? "border-b-2 border-[--primary] text-primary"
-                  : ""
-              }`}
-            >
-              <button onClick={() => setActiveTab("about")}>About</button>
-            </li>
-            <li
-              className={`${
-                activeTab === "gallery"
-                  ? "border-b-2 border-[--primary] text-primary"
-                  : ""
-              }`}
-            >
-              <button onClick={() => setActiveTab("gallery")}>Gallery</button>{" "}
-            </li>
-            <li
-              className={`${
-                activeTab === "review"
-                  ? "border-b-2 border-[--primary] text-primary"
-                  : ""
-              }`}
-            >
-              <button onClick={() => setActiveTab("review")}>Review</button>
-            </li>
-          </ul>
+          {activeTab === "addReview" ? (
+            <RoomAddReview />
+          ) : (
+            <ul className="flex justify-between border-b gap-10 text-lg text-[--muted]">
+              <li
+                className={`${
+                  activeTab === "about"
+                    ? "border-b-2 border-[--primary] text-primary"
+                    : ""
+                }`}
+              >
+                <button onClick={() => setActiveTab("about")}>About</button>
+              </li>
+              <li
+                className={`${
+                  activeTab === "gallery"
+                    ? "border-b-2 border-[--primary] text-primary"
+                    : ""
+                }`}
+              >
+                <button onClick={() => setActiveTab("gallery")}>Gallery</button>{" "}
+              </li>
+              <li
+                className={`${
+                  activeTab === "review"
+                    ? "border-b-2 border-[--primary] text-primary"
+                    : ""
+                }`}
+              >
+                <button onClick={() => setActiveTab("review")}>Review</button>
+              </li>
+            </ul>
+          )}
         </div>
         <div>
           {activeTab === "about" && <RoomAbout />}
           {activeTab === "gallery" && <RoomGallery />}
-          {activeTab === "review" && <RoomReview />}
+          {activeTab === "review" && <RoomReview setActiveTab={setActiveTab} />}
         </div>
       </div>
     </>
