@@ -6,6 +6,8 @@ import { signUpSchema } from "@/utils/AuthSchema";
 import { Button } from "../ui/button";
 import useSignUp from "@/hooks/Auth/useSignUp";
 import { AxiosError } from "axios";
+import { GoogleLogin } from "@react-oauth/google";
+import {jwtDecode} from "jwt-decode";
 
 // عرف الـ type بتاع الخطأ
 type ApiErrorResponse = {
@@ -40,7 +42,9 @@ export default function SignUpForm() {
     <div className="flex flex-col gap-6 p-6 lg:p-12 items-center justify-center w-full md:w-[50%]">
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl text-center">Welcome Again</h1>
-        <p className="text-sm text-gray-500 text-center">welcome back! please fill your Data</p>
+        <p className="text-sm text-gray-500 text-center">
+          welcome back! please fill your Data
+        </p>
       </div>
       <form onSubmit={formik.handleSubmit} className="space-y-3 w-full">
         {/* Name */}
@@ -55,11 +59,18 @@ export default function SignUpForm() {
           error={formik.errors.name}
           touched={formik.touched.name}
           className="bg-white pl-10 py-5"
-          icon={<User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />}
+          icon={
+            <User
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              size={16}
+            />
+          }
         />
         {isError &&
           apiError?.response?.data?.data?.name?.map((nameError) => (
-            <p key={nameError} className="text-sm text-red-500">{nameError}</p>
+            <p key={nameError} className="text-sm text-red-500">
+              {nameError}
+            </p>
           ))}
 
         {/* Email */}
@@ -74,11 +85,18 @@ export default function SignUpForm() {
           error={formik.errors.email}
           touched={formik.touched.email}
           className="bg-white pl-10 py-5"
-          icon={<Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />}
+          icon={
+            <Mail
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              size={16}
+            />
+          }
         />
         {isError &&
           apiError?.response?.data?.data?.email?.map((emailError) => (
-            <p key={emailError} className="text-sm text-red-500">{emailError}</p>
+            <p key={emailError} className="text-sm text-red-500">
+              {emailError}
+            </p>
           ))}
 
         {/* Password */}
@@ -94,11 +112,18 @@ export default function SignUpForm() {
           error={formik.errors.password}
           touched={formik.touched.password}
           className="bg-white pl-10 py-5"
-          icon={<Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />}
+          icon={
+            <Lock
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              size={16}
+            />
+          }
         />
         {isError &&
           apiError?.response?.data?.data?.password?.map((passwordError) => (
-            <p key={passwordError} className="text-sm text-red-500">{passwordError}</p>
+            <p key={passwordError} className="text-sm text-red-500">
+              {passwordError}
+            </p>
           ))}
 
         {/* Confirm Password */}
@@ -114,26 +139,44 @@ export default function SignUpForm() {
           error={formik.errors.password_confirmation}
           touched={formik.touched.password_confirmation}
           className="bg-white pl-10 py-5"
-          icon={<Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />}
+          icon={
+            <Lock
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+              size={16}
+            />
+          }
         />
         {isError &&
-          apiError?.response?.data?.data?.password_confirmation?.map((confirmationError) => (
-            <p key={confirmationError} className="text-sm text-red-500">{confirmationError}</p>
-          ))}
+          apiError?.response?.data?.data?.password_confirmation?.map(
+            (confirmationError) => (
+              <p key={confirmationError} className="text-sm text-red-500">
+                {confirmationError}
+              </p>
+            )
+          )}
 
         {/* Password Rules */}
         {!isError && !isPending && (
           <>
             <p className="text-sm text-gray-500 flex gap-2">
-              <Check className="text-white p-1 rounded-full bg-gray-400 w-5" size={19} />
+              <Check
+                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                size={19}
+              />
               Make sure your password is at least 8 characters
             </p>
             <p className="text-sm text-gray-500 flex gap-2">
-              <Check className="text-white p-1 rounded-full bg-gray-400 w-5" size={19} />
+              <Check
+                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                size={19}
+              />
               Must contain one special character
             </p>
             <p className="text-sm text-gray-500 flex gap-2">
-              <Check className="text-white p-1 rounded-full bg-gray-400 w-5" size={19} />
+              <Check
+                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                size={19}
+              />
               Must contain one capital letter and one number
             </p>
           </>
@@ -141,11 +184,28 @@ export default function SignUpForm() {
 
         {/* Submit Button */}
         <div>
-          <Button type="submit" className="w-full blue-button py-2 mt-4" disabled={isPending}>
+          <Button
+            type="submit"
+            className="w-full blue-button py-2 mt-4"
+            disabled={isPending}
+          >
             {isPending ? "Signing up..." : "Sign Up"}
           </Button>
         </div>
       </form>
+      <GoogleLogin
+        onSuccess={(credentialResponse) => {
+          if (credentialResponse.credential) {
+            const user = jwtDecode(credentialResponse.credential);
+            console.log(user);
+          } else {
+            console.log("No credential received from Google.");
+          }
+        }}
+        onError={() => {
+          console.log("Login Failed");
+        }}
+      />
     </div>
   );
 }
