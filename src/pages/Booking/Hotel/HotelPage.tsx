@@ -25,7 +25,7 @@ function HotelPage() {
         <CardRecommendHotel />
       </div>
       <div className="flex justify-between items-center my-6 text-[13px] md:text-lg">
-        <p className="font-semibold">Recommendation</p>
+        <p className="font-semibold">Nearby Hotel</p>
         <Link to="" className="text-primary ">
           View all
         </Link>
