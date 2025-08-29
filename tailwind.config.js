@@ -63,6 +63,9 @@ export default {
         },
       },
     },
+       fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
   },
   plugins: [require("tailwindcss-animate")],
 };

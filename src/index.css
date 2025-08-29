@@ -176,8 +176,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: "Poppins", sans-serif;
+    @apply bg-background text-foreground font-inter;
   }
 }
 

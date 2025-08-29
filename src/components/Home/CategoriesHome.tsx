@@ -43,7 +43,7 @@ export default function CategoriesHome() {
                 imageSrc == "/src/assets/images/hotel.jpg"
                   ? "/hotel"
                   : imageSrc == "/src/assets/images/car.jpg"
-                  ? "/car"
+                  ? "/CarBookingHome"
                   : imageSrc == "/src/assets/images/tour.jpg"
                   ? "/tours"
                   : "/flight"

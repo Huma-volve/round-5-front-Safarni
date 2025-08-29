@@ -26,7 +26,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CarDetails from "@/pages/car-booking/car-details/CarDetails";
 import CarBookingHome from "@/pages/car-booking/car-booking-home/CarBookingHome";
-import BookingCarMap from "@/pages/booking-car-map/BookingCarMap";
 import Profile from "@/components/profile/Mainprofile/Profile";
 import PersonalInformation from "@/pages/profile/personalInfo/PersonalInformation";
 import MyBooking from "@/pages/profile/MyBooking/MyBooking";
@@ -70,8 +69,7 @@ export default function AppRoutes() {
       
           <Route path="/CarDetails/:id" element={<CarDetails />} />
                 <Route path="/CarBookingHome" element={<CarBookingHome />} />
-               <Route path="/BookingCarMap" element={<BookingCarMap />} />
-               <Route path="/Profile" element={<Profile />} />
+             <Route path="/Profile" element={<Profile />} />
              
                <Route path="/PersonalInformation" element={<PersonalInformation />} />
                <Route path="/AccountSecurity" element={<AccountSecurity />} />
