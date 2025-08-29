@@ -1,11 +1,13 @@
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router-dom';
 import { CarData } from '@/types/CarDataTypes';
+import carImages from '@/data/CarImages';
+
 type PopularCarsCardProps = {
   item: CarData;
 };
 export default function PopularCarsCard({item} : PopularCarsCardProps) {
-
+  const carImage = carImages.find((img) => img.id === Number(item.id));
   return (
     <>
  <div className='px-6 pb-4 shadow-md rounded-xl hover:shadow-lg transition-shadow duration-300'>
@@ -13,8 +15,9 @@ export default function PopularCarsCard({item} : PopularCarsCardProps) {
   <div className='flex justify-between items-center  '>
      <h2 className='font-semibold text-lg md:text-md lg:text-xl'>{item.model}GLA 250 SUV</h2>
  <div>
-  <img src={item.category.image_url}alt="car image"  loading='lazy' 
-  className='w-44 h-32 object-cover rounded-md hover:scale-105 transition-transform duration-300' />
+  <img src={carImage?.url}alt={item.brand}  loading='lazy' 
+  className='w-44 h-32 object-fill rounded-md hover:scale-105 transition-transform duration-300' 
+           />
 
 </div></div>
 
