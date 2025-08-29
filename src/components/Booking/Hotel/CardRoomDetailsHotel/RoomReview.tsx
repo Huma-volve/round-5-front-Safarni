@@ -37,7 +37,7 @@ function RoomReview({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
       <div className="my-7">
         <Swiper
           modules={[Navigation, Pagination]}
-          pagination={{ clickable: true }}
+          // pagination={{ clickable: true }}
           spaceBetween={20}
           slidesPerView={1}
           className="w-full max-w-xs 2xl:max-w-3xl xl:max-w-xl mx-auto"
@@ -78,7 +78,10 @@ function RoomReview({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
             <span className="text-[--primary] text-2xl">$150.00</span>/night
           </p>
         </div>
-        <button className="w-full bg-[--primary] text-white py-3 rounded-lg mt-6 hover:opacity-90 transition">
+        <button
+          onClick={() => setActiveTab("booking")}
+          className="w-full bg-[--primary] text-white py-3 rounded-lg mt-6 hover:opacity-90 transition"
+        >
           Book Now
         </button>
       </div>

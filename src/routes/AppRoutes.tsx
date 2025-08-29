@@ -66,7 +66,7 @@ export default function AppRoutes() {
           </Route>
 
           {/* //this approach is temporary until checkout mechanism is ready */}
-          <Route
+          {/* <Route
             path="payment"
             element={
               <Elements stripe={stripePromise}>
@@ -76,7 +76,7 @@ export default function AppRoutes() {
                 />
               </Elements>
             }
-          />
+          /> */}
 
           <Route path="/CarDetails/:id" element={<CarDetails />} />
           <Route path="/CarBookingHome" element={<CarBookingHome />} />

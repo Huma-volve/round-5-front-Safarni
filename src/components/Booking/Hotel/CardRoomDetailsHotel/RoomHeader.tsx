@@ -4,9 +4,12 @@ import RoomAbout from "./RoomAbout";
 import RoomGallery from "./RoomGallery";
 import RoomReview from "./RoomReview";
 import RoomAddReview from "./RoomAddReview";
-
-function RoomHeader() {
-  const [activeTab, setActiveTab] = useState("about");
+import RoomBooking from "./RoomBooking";
+type RoomHeaderProps = {
+  activeTab: string;
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+};
+function RoomHeader({ activeTab, setActiveTab }: RoomHeaderProps) {
   return (
     <>
       <div className="w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
@@ -26,7 +29,10 @@ function RoomHeader() {
             </h2>
             <p className="text-[--input]">1012 oscean avanue, New Yourk ,USA</p>
           </div>
-          {activeTab === "addReview" ? (
+
+          {activeTab === "booking" ? (
+            <RoomBooking setActiveTab={setActiveTab} />
+          ) : activeTab === "addReview" ? (
             <RoomAddReview />
           ) : (
             <ul className="flex justify-between border-b gap-10 text-lg text-[--muted]">
@@ -61,8 +67,10 @@ function RoomHeader() {
           )}
         </div>
         <div>
-          {activeTab === "about" && <RoomAbout />}
-          {activeTab === "gallery" && <RoomGallery />}
+          {activeTab === "about" && <RoomAbout setActiveTab={setActiveTab} />}
+          {activeTab === "gallery" && (
+            <RoomGallery setActiveTab={setActiveTab} />
+          )}
           {activeTab === "review" && <RoomReview setActiveTab={setActiveTab} />}
         </div>
       </div>
