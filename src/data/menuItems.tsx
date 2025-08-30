@@ -6,12 +6,12 @@ interface MenuItem {
   danger?: boolean;
 }
 
-import { User, Calendar,  Lock } from "lucide-react"; 
+import { User, Calendar } from "lucide-react"; 
 
 const menuItems: MenuItem[] = [
   { to: "/PersonalInformation", label: "Personal Info", icon: <User  className="w-6 h-6" /> },
   { to: "/MyBooking", label: "My Booking", icon: <Calendar className="w-6 h-6"  /> },
-  { to: "/AccountSecurity", label: "Account & Security", icon: <Lock className="w-6 h-6" /> },
+
 
 ];
 

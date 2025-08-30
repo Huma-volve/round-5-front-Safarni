@@ -1,7 +1,7 @@
 import profile from '@/assets/profile.png'
 import { Link, useNavigate } from 'react-router-dom'
 import menuItems from '@/data/menuItems';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import {
   Dialog,
@@ -10,8 +10,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { LogOut } from 'lucide-react';
+import { LogOut, Trash } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
+
 export default function Profile() {
   const navigate = useNavigate()
   const token = localStorage.getItem("token");
@@ -27,10 +29,38 @@ export default function Profile() {
             Accept: "application/json" },
       };
       const { data } = await axios.request(options);
-       console.log("profile data" , data)
+       
       return data;
-     
+  
     },
+    
+  })
+ const mutation = useMutation({
+  
+    mutationFn : async ()=>
+      {
+      const options = {
+        method: "post",
+        url: "https://round5-safarnia.huma-volve.com/api/profile/delete-account",
+       headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json" },
+      };
+      const { data } = await axios.request(options);
+       
+      return data;
+    },
+ onSuccess: () => {
+    toast.success("Account deleted successfully!");
+    setTimeout(()=>{    localStorage.removeItem("token"); 
+    window.location.href = "/auth/signup"; })
+
+  },
+  onError: (error) => {
+    toast.error("Something went wrong. Please try again.");
+    console.error(error);
+  },
+    
   })
   return (
     <main className='space-y-4 py-5 my-8'>
@@ -55,9 +85,10 @@ menuItems.map((item, index)=>(
       </Link>
 ))
 } 
+ 
 
 <Dialog>
-  <DialogTrigger > <div className=" shadow-sm py-3 rounded-md bg-white  flex items-center gap-3 w-full text-red-600">
+  <DialogTrigger > <div className=" shadow-sm py-3 rounded-md bg-white  flex items-center gap-3 w-full ">
             <LogOut  className="w-6 h-6" />
               <h3 className=" font-semibold sm:text-base text-lg lg:text-xl">
                 Logout
@@ -84,6 +115,14 @@ menuItems.map((item, index)=>(
     </DialogHeader>
   </DialogContent>
 </Dialog>
+
+<button onClick={()=>{mutation.mutate()}}
+  className="shadow-sm py-3 rounded-md flex items-center gap-3 text-red-600">
+    <Trash className="w-6 h-6 " />
+  <h3 className='font-semibold sm:text-base text-lg lg:text-xl gap-3 '>Delete Account</h3>
+    
+      </button>
+
 </section> 
  </main>
   ) }
