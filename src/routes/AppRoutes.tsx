@@ -24,9 +24,10 @@ import Tour from "@/pages/TourPage/Tour";
 import AppPayment from "@/pages/Payment/AppPayment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import CheckoutPage from "@/pages/Checkout/CheckoutPage";
 
 export default function AppRoutes() {
-  const stripePromise = loadStripe("pk_test_XXXXXXXXXXXXXXXX");
+  const stripePromise = loadStripe("pk_test_51S1AInLy3vB4lGErZjTLbevXy8WnwWqQ5bsPUjJjgOEFRfaSya7uxgl4iUCVKMTNbtvj42KMkIv6As6dx9bTV3Kw00q7PRxBRP");
 
   return (
     <Router>
@@ -58,8 +59,10 @@ export default function AppRoutes() {
               element={<RoomDetailsHotelPage />}
             />
 
+            <Route path="/checkout" element={<CheckoutPage/>}/>
+
             //this approach is temporary until checkout mechanism is ready
-              <Route path="payment" element={<Elements stripe={stripePromise}><AppPayment booking_id="7" clientSecret="pi_3S0XIT00Xq5cUHDc0gTeU98Z_secret_53dqpgxrvDaBBxX2vEhjtxGmh"/></Elements>}/>
+            <Route path="/payment" element={<Elements stripe={stripePromise}><AppPayment/></Elements>}/>
         </Route>
 
         {/* Auth */}
