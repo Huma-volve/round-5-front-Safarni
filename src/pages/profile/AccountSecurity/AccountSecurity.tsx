@@ -5,7 +5,7 @@ export default function AccountSecurity() {
   return (
     <>
     
-        <section className=' border py-8 border-red-700 rounded-md space-y-4 container'>
+        <section className=' border my-12 py-4 border-red-700 rounded-md space-y-4 container'>
  <h1 className='text-center text-lg md:text-2xl lg:text-3xl font-semibold'>Account Security</h1>
 
 

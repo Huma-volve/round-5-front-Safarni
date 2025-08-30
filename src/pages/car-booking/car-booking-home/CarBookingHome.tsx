@@ -21,6 +21,8 @@ export default function CarBookingHome() {
         },
       };
       const { data } = await axios.request(options);
+      console.log("car book" , data);
+      
       return data;
     },
   });
@@ -30,18 +32,23 @@ export default function CarBookingHome() {
         <div className="flex gap-4 justify-between ">
           <Swiper
             spaceBetween={10}
-            slidesPerView={6}
             slidesPerGroup={3}
+             breakpoints={{
+    320: { slidesPerView: 2 },
+    640: { slidesPerView: 4 },
+    1000: { slidesPerView: 6 },
+  }}
             autoplay={{
               delay: 2000,
               disableOnInteraction: false,
             }}
+         
             modules={[Autoplay]}
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
           >
             {brand.map((item) => (
-              <SwiperSlide>
+              <SwiperSlide key={item.id}>
                 {" "}
                 <Brands key={item.id} item={item} />
               </SwiperSlide>

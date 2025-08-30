@@ -93,6 +93,7 @@ export default function AppRoutes() {
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
+        
           <Route path="/maps" element={<MapSearchCompare />} />
           <Route path="/map" element={<MapView />} />
 
