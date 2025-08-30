@@ -12,7 +12,7 @@ export default function CarDetails() {
   const carImage = carImages.find((img) => img.id === carId);
 
     const {data} = useQuery({
-        queryKey: ['car'],
+        queryKey: ['car' , id],
         queryFn: async()=>{
             const options = {
                 method: "get",
@@ -27,7 +27,7 @@ export default function CarDetails() {
   return (
     <main className="container h-[calc(100vh-100px)] flex items-center">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 ">
-        <div className="bg-[#F4F4F4] rounded-md flex justify-center items-center">
+        <div className="bg-white rounded-md flex justify-center items-center">
           <img
             src={carImage?.url}
             loading="lazy"

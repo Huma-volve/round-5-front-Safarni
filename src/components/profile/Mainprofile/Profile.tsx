@@ -17,6 +17,7 @@ export default function Profile() {
   const token = localStorage.getItem("token");
   const { data } = useQuery({
     queryKey: ["car"],
+  
     queryFn: async () => {
       const options = {
         method: "get",

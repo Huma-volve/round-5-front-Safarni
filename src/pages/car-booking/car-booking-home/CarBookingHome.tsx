@@ -11,7 +11,9 @@ import { Autoplay } from "swiper/modules";
 export default function CarBookingHome() {
   const token = localStorage.getItem("token");
   const { data } = useQuery({
-    queryKey: ["car"],
+    queryKey: ["cars"],
+       refetchOnWindowFocus: true,   
+  refetchOnMount: true,
     queryFn: async () => {
       const options = {
         method: "get",

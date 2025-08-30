@@ -10,7 +10,7 @@ export default function PopularCarsCard({item} : PopularCarsCardProps) {
   const carImage = carImages.find((img) => img.id === Number(item.id));
   return (
     <>
- <div className='px-6 pb-4 shadow-md rounded-xl hover:shadow-lg transition-shadow duration-300'>
+ <div className='px-6 pb-4 shadow-sm rounded-xl hover:shadow-md transition-shadow duration-300'>
  
   <div className='flex justify-between items-center  '>
      <h2 className='font-semibold text-lg md:text-md lg:text-xl'>{item.model}GLA 250 SUV</h2>
