@@ -6,7 +6,6 @@ export async function getTourDetails(id: number) {
   try {
     const { data } = await axiosInstance.get(`tours/${id}`);
     const tourData = data.data;
-    console.log(tourData);
 
     const tour:any = {
       hero: {
@@ -21,19 +20,23 @@ export async function getTourDetails(id: number) {
       price: tourData.price,
       top_activities: tourData.top_activities || fake_tour.fakeActivities,
       gallery: tourData.images || fake_tour.images,
-      tour_slot_id: tourData.slots[0].slot_id || 1,
-      seats_count: tourData.slots[0].max_seats || 10,
+      tour_slot_id: tourData.slots[4].slot_id || 1,
+      // seats_count: tourData.slots[0].max_seats || 10,
+      seats_count: 8,
     };
 
     return tour;
-
   } catch (error) {
-    console.log(error);
-    return error;
+    throw error;
   }
 }
 
 export async function tourBooking(bookingDetails: any) {
-  const { data } = await axiosInstance.post("tour-bookings", bookingDetails);
-  return data;
+  try {
+    console.log(bookingDetails);
+    const { data } = await axiosInstance.post("tour-bookings", bookingDetails);
+    return data.data;
+  } catch (error:any) {
+    throw error
+  }
 }

@@ -41,9 +41,9 @@ export default function CategoriesHome() {
             <Link
               to={`${
                 imageSrc == "/src/assets/images/hotel.jpg"
-                  ? "/hotel"
+                  ? "/booking/hotel"
                   : imageSrc == "/src/assets/images/car.jpg"
-                  ? "/car"
+                  ? "/CarBookingHome"
                   : imageSrc == "/src/assets/images/tour.jpg"
                   ? "/tours"
                   : "/flight"

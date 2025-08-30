@@ -6,6 +6,7 @@ type confirmPaymentType = {
 }
 
 export async function confirmPayment(paymentDetails:confirmPaymentType) {
-  const { data } = await axiosInstance.post("confirm", paymentDetails);
+  console.log(paymentDetails);
+  const { data } = await axiosInstance.post("checkout/confirm", paymentDetails);
   return data;
 }
