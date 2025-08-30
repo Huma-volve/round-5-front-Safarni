@@ -21,9 +21,11 @@ import RoomHotelPage from "@/pages/Booking/Hotel/RoomHotelPage";
 import RoomDetailsHotelPage from "@/pages/Booking/Hotel/RoomDetailsHotelPage";
 import Tours from "@/pages/TourPage/Tours";
 import Tour from "@/pages/TourPage/Tour";
-// import AppPayment from "@/pages/Payment/AppPayment";
-// import { Elements } from "@stripe/react-stripe-js";
-// import { loadStripe } from "@stripe/stripe-js";
+import AppPayment from "@/pages/Payment/AppPayment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutPage from "@/pages/Checkout/CheckoutPage";
+
 import CarDetails from "@/pages/car-booking/car-details/CarDetails";
 import CarBookingHome from "@/pages/car-booking/car-booking-home/CarBookingHome";
 import Profile from "@/components/profile/Mainprofile/Profile";
@@ -32,6 +34,10 @@ import MyBooking from "@/pages/profile/MyBooking/MyBooking";
 import AccountSecurity from "@/pages/profile/AccountSecurity/AccountSecurity";
 
 export default function AppRoutes() {
+  const stripePromise = loadStripe(
+    "pk_test_51S1AInLy3vB4lGErZjTLbevXy8WnwWqQ5bsPUjJjgOEFRfaSya7uxgl4iUCVKMTNbtvj42KMkIv6As6dx9bTV3Kw00q7PRxBRP"
+  );
+
   return (
     <Router>
       <ScrollToTop />
@@ -64,18 +70,15 @@ export default function AppRoutes() {
             />
           </Route>
 
-          {/* //this approach is temporary until checkout mechanism is ready */}
-          {/* <Route
-            path="payment"
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route
+            path="/payment"
             element={
               <Elements stripe={stripePromise}>
-                <AppPayment
-                  booking_id="7"
-                  clientSecret="pi_3S0XIT00Xq5cUHDc0gTeU98Z_secret_53dqpgxrvDaBBxX2vEhjtxGmh"
-                />
+                <AppPayment />
               </Elements>
             }
-          /> */}
+          />
 
           <Route path="/CarDetails/:id" element={<CarDetails />} />
           <Route path="/CarBookingHome" element={<CarBookingHome />} />
@@ -101,10 +104,9 @@ export default function AppRoutes() {
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
 
-          <Route path="/maps" element={<MapSearchCompare />} />
-          <Route path="/map" element={<MapView />} />
-
-    </Routes>
+        <Route path="/maps" element={<MapSearchCompare />} />
+        <Route path="/map" element={<MapView />} />
+      </Routes>
     </Router>
   );
 }

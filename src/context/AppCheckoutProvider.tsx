@@ -1,13 +1,13 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 /*
 
+Ex: How to update checkout data using this context
 const { updateCheckout } = useCheckoutContext<HotelBooking>();
-
-updateCheckout(
+updateCheckout({
     12345,                    
     "hotel",               
-);
+    });
 */
 
 type CheckoutDataType = {
@@ -33,7 +33,12 @@ function AppCheckoutProvider<T>({ children }: { children: ReactNode }) {
     booking_type: null,
   });
 
+  useEffect(()=>{
+    console.log(checkoutData);
+  }, [checkoutData])
+
   const updateCheckout = (booking_id: number, booking_type: string) => {
+    console.log(booking_id, booking_type);
     setCheckoutData({
       booking_id,
       booking_type,
