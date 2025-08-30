@@ -13,6 +13,8 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         "compare-bg": "var(--compare-bg)",
+        text: "var(--text)",
+
         card: {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
@@ -25,11 +27,11 @@ export default {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
         },
-        text: "var(--text)",
         secondary: {
           DEFAULT: "var(--secondary)",
           foreground: "var(--secondary-foreground)",
         },
+
         input: "var(--input)",
         success: "var(--success)",
         choose: "var(--choose)",
@@ -41,6 +43,7 @@ export default {
         border: "var(--border)",
         "border-g1": "var(--border-g1)",
         "border-g2": "var(--border-g2)",
+
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -54,6 +57,7 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         ring: "hsl(var(--ring))",
+
         chart: {
           1: "hsl(var(--chart-1))",
           2: "hsl(var(--chart-2))",
@@ -62,10 +66,10 @@ export default {
           5: "hsl(var(--chart-5))",
         },
       },
-    },
-       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
       },
+    },
   },
   plugins: [require("tailwindcss-animate")],
 };
