@@ -1,11 +1,19 @@
 import car from '@/assets/car.png'
+import { Button } from '@/components/ui/button'
 
-export default function CarTicketCard() {
+
+type CarTicketCardProps = {
+  showConfirm?: boolean;
+  onConfirm?: () => void; 
+}
+export default function CarTicketCard({ showConfirm = false  ,  onConfirm}:CarTicketCardProps) {
+
   return (
     <>
-      <div className="border rounded-lg shadow-sm flex justify-between items-center p-4 bg-white w-full container">
+      <div className="border rounded-lg shadow-sm  p-4 bg-white w-full container">
  
-      <div>
+     <div className="flex justify-between items-center">
+       <div>
         <h2 className="font-semibold text-gray-800">S 500 Sedan</h2>
         <div className="flex gap-4 text-xs text-gray-500 mt-2">
           <span>Automatic</span>
@@ -18,8 +26,21 @@ export default function CarTicketCard() {
         alt="Car"
         className="w-32 h-32 object-contain"
       />
+
+     </div>
+{
+  showConfirm   && 
+  <div className='w-full container'>
+    <Button   onClick={onConfirm} className='w-full block text-center bg-[#1E429F] hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded-md shadow-md transition-all justify-center'>Confirm</Button>
+</div>
+}
+
+      
     </div>
-    
+    {
+
+    }
+  
     </>
   )
 }

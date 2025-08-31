@@ -31,7 +31,8 @@ import CarBookingHome from "@/pages/car-booking/car-booking-home/CarBookingHome"
 import Profile from "@/components/profile/Mainprofile/Profile";
 import PersonalInformation from "@/pages/profile/personalInfo/PersonalInformation";
 import MyBooking from "@/pages/profile/MyBooking/MyBooking";
-import AccountSecurity from "@/pages/profile/AccountSecurity/AccountSecurity";
+
+import MapWithRoute from "@/pages/car-booking/from-to-map/MapWithRoute";
 
 export default function AppRoutes() {
   const stripePromise = loadStripe(
@@ -88,7 +89,6 @@ export default function AppRoutes() {
             path="/PersonalInformation"
             element={<PersonalInformation />}
           />
-          <Route path="/AccountSecurity" element={<AccountSecurity />} />
 
           <Route path="/MyBooking" element={<MyBooking />} />
         </Route>
@@ -106,6 +106,9 @@ export default function AppRoutes() {
 
         <Route path="/maps" element={<MapSearchCompare />} />
         <Route path="/map" element={<MapView />} />
+        <Route path="/MapWithRoute" element={<MapWithRoute/>} />
+
+        
       </Routes>
     </Router>
   );

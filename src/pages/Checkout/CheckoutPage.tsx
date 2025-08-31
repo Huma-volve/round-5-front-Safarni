@@ -14,7 +14,7 @@ function CheckoutPage() {
     console.log(checkoutData);
   }, [checkoutData])
 
-  //temporary test the checkout sending payment_id client_secret to payment using navigation state with a setTimeout
+//  temporary test the checkout sending payment_id client_secret to payment using navigation state with a setTimeout
   // setTimeout(() => {
   //   navigate("/payment", {
   //     state: {

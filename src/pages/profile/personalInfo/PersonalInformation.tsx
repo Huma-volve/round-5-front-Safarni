@@ -1,26 +1,9 @@
+import { useProfile } from '@/api/useProfile';
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 
 export default function PersonalInformation() {
-  const token = localStorage.getItem("token");
-  const { data } = useQuery({
-    queryKey: ["car"],
-    queryFn: async () => {
-      const options = {
-        method: "get",
-        url: "https://round5-safarnia.huma-volve.com/api/profile",
-       headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: "application/json" },
-      };
-      const { data } = await axios.request(options);
-       console.log("profile data" , data)
-      return data;
-     
-    },
-  })
+const { data } = useProfile()
   return (
     <main className="h-[calc(100vh-100px)] flex items-center justify-center ">
       <section className="container py-4 flex flex-col justify-center border border-border-g2 rounded-md space-y-4 w-full max-w-lg">
