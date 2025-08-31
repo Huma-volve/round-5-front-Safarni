@@ -23,7 +23,7 @@ export default function AppNavBar() {
       {/* Top Navbar (Desktop / Tablet) */}
       <div className="fixed top-0 left-0 right-0 w-full bg-white py-4 
                 px-6 sm:px-12 md:px-32 
-                hidden md:flex justify-between items-center z-50">
+                hidden md:flex justify-between items-center z-50 ">
         {/* logo */}
         <Link to="/">
           <div className="hidden md:flex flex-col items-center">

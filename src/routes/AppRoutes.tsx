@@ -24,9 +24,19 @@ import Tour from "@/pages/TourPage/Tour";
 import AppPayment from "@/pages/Payment/AppPayment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import CheckoutPage from "@/pages/Checkout/CheckoutPage";
+
+import CarDetails from "@/pages/car-booking/car-details/CarDetails";
+import CarBookingHome from "@/pages/car-booking/car-booking-home/CarBookingHome";
+import Profile from "@/components/profile/Mainprofile/Profile";
+import PersonalInformation from "@/pages/profile/personalInfo/PersonalInformation";
+import MyBooking from "@/pages/profile/MyBooking/MyBooking";
+import AccountSecurity from "@/pages/profile/AccountSecurity/AccountSecurity";
 
 export default function AppRoutes() {
-  const stripePromise = loadStripe("pk_test_XXXXXXXXXXXXXXXX");
+  const stripePromise = loadStripe(
+    "pk_test_51S1AInLy3vB4lGErZjTLbevXy8WnwWqQ5bsPUjJjgOEFRfaSya7uxgl4iUCVKMTNbtvj42KMkIv6As6dx9bTV3Kw00q7PRxBRP"
+  );
 
   return (
     <Router>
@@ -44,22 +54,43 @@ export default function AppRoutes() {
           <Route path="/tours" element={<Tours />} />
           <Route path="/tours/:id" element={<Tour />} />
 
-
           <Route path="/filter-tours" element={<FilterToursResult />} />
 
           {/* compare */}
           <Route path="/compare" element={<Compare />} />
 
           {/* booking */}
+          <Route path="/booking">
+            {/* hotel booking */}
             <Route path="hotel" element={<HotelPage />} />
-            <Route path="/hotel/:hotelId" element={<RoomHotelPage />} />
+            <Route path="hotel/:hotelId" element={<RoomHotelPage />} />
             <Route
               path="hotel/:hotelId/room/:roomId"
               element={<RoomDetailsHotelPage />}
             />
+          </Route>
 
-            {/* //this approach is temporary until checkout mechanism is ready */}
-              <Route path="payment" element={<Elements stripe={stripePromise}><AppPayment booking_id="7" clientSecret="pi_3S0XIT00Xq5cUHDc0gTeU98Z_secret_53dqpgxrvDaBBxX2vEhjtxGmh"/></Elements>}/>
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route
+            path="/payment"
+            element={
+              <Elements stripe={stripePromise}>
+                <AppPayment />
+              </Elements>
+            }
+          />
+
+          <Route path="/CarDetails/:id" element={<CarDetails />} />
+          <Route path="/CarBookingHome" element={<CarBookingHome />} />
+          <Route path="/Profile" element={<Profile />} />
+
+          <Route
+            path="/PersonalInformation"
+            element={<PersonalInformation />}
+          />
+          <Route path="/AccountSecurity" element={<AccountSecurity />} />
+
+          <Route path="/MyBooking" element={<MyBooking />} />
         </Route>
 
         {/* Auth */}
@@ -72,8 +103,9 @@ export default function AppRoutes() {
           <Route path="reset-password" element={<ResetPasswordPage />} />
           <Route path="reset-password-success" element={<ResetSuccessPage />} />
         </Route>
-          <Route path="/maps" element={<MapSearchCompare />} />
-          <Route path="/map" element={<MapView />} />
+
+        <Route path="/maps" element={<MapSearchCompare />} />
+        <Route path="/map" element={<MapView />} />
       </Routes>
     </Router>
   );
