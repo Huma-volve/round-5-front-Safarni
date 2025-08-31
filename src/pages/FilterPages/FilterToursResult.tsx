@@ -4,16 +4,16 @@ import NoData from "@/components/common/NoData";
 import { ChevronLeft } from "lucide-react";
 import Loading from "@/components/common/Loading";
 import nullimage from "@/assets/images/noimage-home.png";
+import { useEffect } from "react";
 
 export default function FilterToursResult() {
   const [searchParams] = useSearchParams();
   const queryString = searchParams.toString();
 
   const { tours, isLoading, isError, error } = useFilterTours(queryString);
-
+  
   if (isLoading) return <Loading />;
   if (isError) return <p className="text-red-500">{error?.message}</p>;
-
   return (
     <div className="bg-white px-4 md:px-12 lg:px-32 py-3 w-full">     
      {/* Mobile Header */}
