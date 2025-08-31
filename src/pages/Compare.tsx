@@ -1,15 +1,7 @@
-import Card from "@/components/compare/Card"
-import CompareCard from "@/components/compare/CompareCard"
-import SearchPage from "./SearchPages/SearchPage"
-
-
+import SearchCompare from "@/components/compare/SearchCompare"
 function Compare() {
   return (
-    <div className="container m-auto">
-      <SearchPage />
-      <Card/>
-      <CompareCard/>
-    </div>
+    <SearchCompare />
   )
 }
 
