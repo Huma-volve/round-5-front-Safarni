@@ -1,12 +1,36 @@
 import car from '@/assets/car.png'
 import { Button } from '@/components/ui/button'
-
+import { Dispatch, SetStateAction } from 'react';
+interface Car {
+  id: number;
+  model: string;
+  brand: string;
+  daily_rate: string;
+  seats: number;
+  fuel_type: string;
+  transmission: string;}
 
 type CarTicketCardProps = {
   showConfirm?: boolean;
   onConfirm?: () => void; 
+   selectedCar: Car | null;
+  setSelectedCar: Dispatch<SetStateAction<Car | null>>;
+  pickupDate: Date | null;
+  setPickupDate: Dispatch<SetStateAction<Date | null>>;
+  returnDate: Date | null;
+  setReturnDate: Dispatch<SetStateAction<Date | null>>;
 }
-export default function CarTicketCard({ showConfirm = false  ,  onConfirm}:CarTicketCardProps) {
+export default function CarTicketCard({ 
+   showConfirm = false,
+  onConfirm,
+  selectedCar,
+  setSelectedCar,
+  pickupDate,
+  setPickupDate,
+  returnDate,
+  setReturnDate,
+
+}:CarTicketCardProps) {
 
   return (
     <>
@@ -29,18 +53,31 @@ export default function CarTicketCard({ showConfirm = false  ,  onConfirm}:CarTi
 
      </div>
 {
-  showConfirm   && 
-  <div className='w-full container'>
+  showConfirm   &&  <>
+ 
+<div className="flex gap-2 mb-4 justify-center items-center">
+  <input
+    type="date"
+    value={pickupDate ? pickupDate.toISOString().split("T")[0] : ""}
+    onChange={(e) => setPickupDate(new Date(e.target.value))}
+    className="border p-2 rounded"
+  />
+  <input
+    type="date"
+    value={returnDate ? returnDate.toISOString().split("T")[0] : ""}
+    onChange={(e) => setReturnDate(new Date(e.target.value))}
+    className="border p-2 rounded"
+  />
+</div>
+ <div className='w-full container'>
     <Button   onClick={onConfirm} className='w-full block text-center bg-[#1E429F] hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded-md shadow-md transition-all justify-center'>Confirm</Button>
 </div>
+</>
 }
 
       
     </div>
-    {
-
-    }
-  
+   
     </>
   )
 }

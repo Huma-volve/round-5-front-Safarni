@@ -75,7 +75,7 @@ export default function CarDetails() {
           </div>
 
           <div className='w-full'>
-            <Link to='/MapWithRoute' className="w-full block text-center bg-[#1E429F] hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded-md shadow-md transition-all">
+            <Link to='/MapWithRoute'  state={{ selectedCar: data }} className="w-full block text-center bg-[#1E429F] hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded-md shadow-md transition-all">
               Pick Up
             </Link >
           </div>
