@@ -51,7 +51,7 @@ export default function CategoriesHome() {
               key={i}
               className="flex flex-col items-center text-center transition hover:scale-105"
             >
-              <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-md">
+              <div className="w-28 h-28 md:w-28 md:h-28 rounded-full overflow-hidden shadow-md">
                 <img
                   src={imageSrc}
                   alt={cat.title}
