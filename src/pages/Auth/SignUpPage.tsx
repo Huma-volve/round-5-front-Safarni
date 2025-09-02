@@ -1,13 +1,18 @@
 import SignUpForm from "@/components/auth/SignUpForm";
-import signupImg from "@/assets/images/signup-img.png";
+import RegisterAnimation from "@/assets/animations/register.json";
+import Lottie from "lottie-react";
 
 export default function SignUpPage() {
   return (
     <div className="flex gap-3 items-center">
-      <div
-        className="hidden md:flex w-[45%] h-[572px] bg-contain bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${signupImg})` }}
-      />
+      <div className="w-[50%] items-start hidden md:flex md:flex-col h-[500px]">
+      <Lottie
+        animationData={RegisterAnimation}
+        loop={true}
+        style={{ width: "100%", height: "23rem" ,marginTop: "0"}}
+        className=""
+        />
+        </div>
       <SignUpForm />
     </div>
   );

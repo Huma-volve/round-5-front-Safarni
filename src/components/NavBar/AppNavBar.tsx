@@ -16,7 +16,7 @@ export default function AppNavBar() {
   const isAuthenticated = !!token;
   const location = useLocation();
 
-  const isLoginPage = location.pathname === "/auth/login";
+  const isLoginPage = location.pathname === "/auth/welcome" || location.pathname === "/auth/login";
 
   return (
     <>
@@ -90,7 +90,7 @@ export default function AppNavBar() {
             </>
           ) : (
             <Link
-              to={isLoginPage ? "/auth/signup" : "/auth/login"}
+              to={isLoginPage ? "/auth/signup" : "/auth/welcome"}
               className="px-4 py-2 bg-[#1E429F] text-white rounded-lg text-sm font-medium hover:bg-[#16367A] transition"
             >
               {isLoginPage ? "Sign up" : "Login"}

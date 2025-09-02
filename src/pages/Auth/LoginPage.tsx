@@ -1,14 +1,17 @@
-import loginImg from '@/assets/images/signin-img.png';
-import LoginForm from '@/components/auth/LoginForm';
+import LoginAnimation from "@/assets/animations/Login.json";
+import LoginForm from "@/components/auth/LoginForm";
+import Lottie from "lottie-react";
 
 export default function LoginPage() {
   return (
     <div className="flex gap-3 items-center">
-      <div
-        className="hidden md:flex w-[45%] h-[572px] bg-contain bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${loginImg})` }}
+      <Lottie
+        animationData={LoginAnimation}
+        loop={true}
+        style={{ width: "45%" }}
+        className="hidden md:flex"
       />
       <LoginForm />
     </div>
-  )
+  );
 }

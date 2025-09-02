@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import useResetPassword from "@/hooks/Auth/useResetPassword";
 import { AxiosError } from "axios";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function ResetPasswordForm() {
   const {
@@ -15,6 +16,9 @@ export default function ResetPasswordForm() {
     isError,
     error,
   } = useResetPassword();
+
+  const [passFocused, setPassFocused] = useState(false);
+  const [confirmPassFocused, setConfirmPassFocused] = useState(false);
 
   // Get email from localStorage
   const email = localStorage.getItem("email") || "";
@@ -30,6 +34,18 @@ export default function ResetPasswordForm() {
       resetPassword(values);
     },
   });
+
+  const showPasswordValidation = passFocused || formik.touched.password;
+  const showConfirmValidation = confirmPassFocused || formik.touched.password_confirmation;
+  
+  const passLessThan8 = showPasswordValidation && formik.values.password.length < 8;
+  const passNotMatch = showConfirmValidation && formik.values.password_confirmation !== formik.values.password;
+  const passNotHaveNumber_Capital = showPasswordValidation && !/[0-9]/.test(formik.values.password) && !/[A-Z]/.test(formik.values.password);
+  const passNotHaveSpecial = showPasswordValidation && !/[!@#$%^&*(),.?":{}|<>]/.test(formik.values.password);
+  const passLenth8 = showPasswordValidation && formik.values.password.length >= 8;
+  const passMatch = showConfirmValidation && formik.values.password_confirmation === formik.values.password && (formik.values.password.length >= 8);
+  const passHaveNumberCapital = showPasswordValidation && /[0-9]/.test(formik.values.password) && /[A-Z]/.test(formik.values.password);
+  const passHaveSpecial = showPasswordValidation && /[!@#$%^&*(),.?":{}|<>]/.test(formik.values.password);
 
   return (
     <div className="flex flex-col gap-6 p-6 lg:p-12 items-center justify-center w-full md:w-[50%]">
@@ -49,7 +65,10 @@ export default function ResetPasswordForm() {
           placeholder="Enter your new password"
           value={formik.values.password}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          onBlur={(e) => {
+            formik.handleBlur(e);
+            setPassFocused(false);
+          }}
           error={formik.errors.password}
           touched={formik.touched.password}
           className="bg-white pl-10 py-5"
@@ -59,6 +78,7 @@ export default function ResetPasswordForm() {
               size={16}
             />
           }
+          onFocus={() => setPassFocused(true)}
         />
 
         <FormField
@@ -69,7 +89,10 @@ export default function ResetPasswordForm() {
           placeholder="Confirm your new password"
           value={formik.values.password_confirmation}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          onBlur={(e) => {
+            formik.handleBlur(e);
+            setConfirmPassFocused(false);
+          }}
           error={formik.errors.password_confirmation}
           touched={formik.touched.password_confirmation}
           className="bg-white pl-10 py-5"
@@ -79,6 +102,7 @@ export default function ResetPasswordForm() {
               size={16}
             />
           }
+          onFocus={() => setConfirmPassFocused(true)}
         />
 
         {/* Show API error if any */}
@@ -89,28 +113,36 @@ export default function ResetPasswordForm() {
           </p>
         )}
 
+        {/* Password Rules */}
         {!isError && !isPending && (
           <>
-            <p className="text-sm text-gray-500 flex gap-2">
+            <p className={`text-sm flex gap-2 ${passLessThan8 ? "text-red-500" : passLenth8 ? "text-green-500" : "text-gray-500"}`}>
               <Check
-                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                className={`text-white p-1 rounded-full w-5 ${passLessThan8 ? "bg-red-500" : passLenth8 ? "bg-green-500" : "bg-gray-400"}`}
                 size={19}
               />
               Make sure your password is at least 8 characters
             </p>
-            <p className="text-sm text-gray-500 flex gap-2">
+            <p className={`text-sm flex gap-2 ${passNotHaveSpecial ? "text-red-500" : passHaveSpecial ? "text-green-500" : "text-gray-500"}`}>
               <Check
-                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                className={`text-white p-1 rounded-full w-5 ${passNotHaveSpecial ? "bg-red-500" : passHaveSpecial ? "bg-green-500" : "bg-gray-400"}`}
                 size={19}
               />
               Must contain one special character
             </p>
-            <p className="text-sm text-gray-500 flex gap-2">
+            <p className={`text-sm flex gap-2 ${passNotHaveNumber_Capital ? "text-red-500" : passHaveNumberCapital ? "text-green-500" : "text-gray-500"}`}>
               <Check
-                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                className={`text-white p-1 rounded-full w-5 ${passNotHaveNumber_Capital ? "bg-red-500" : passHaveNumberCapital ? "bg-green-500" : "bg-gray-400"}`}
                 size={19}
               />
               Must contain one capital letter and one number
+            </p>
+            <p className={`text-sm flex gap-2 ${passNotMatch ? "text-red-500" : passMatch ? "text-green-500" : "text-gray-500"}`}>
+              <Check
+                className={`text-white p-1 rounded-full w-5 ${passNotMatch ? "bg-red-500" : passMatch ? "bg-green-500" : "bg-gray-400"}`}
+                size={19}
+              />
+              Must Match
             </p>
           </>
         )}
