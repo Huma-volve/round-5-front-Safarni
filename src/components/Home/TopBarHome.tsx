@@ -27,7 +27,7 @@ export default function TopBarHome(){
                   </div>
                   </Link>
                   <Link to="/search" className="flex-1">
-                  <div className="flex items-center gap-2 border border-gray-300 text-gray-400 px-3 py-3 rounded-xl">
+                  <div className="flex items-center gap-2 border border-gray-300 text-gray-400 px-3 py-[10px] rounded-xl">
                     <Search size={18} />
                     <span>Search...</span>
                   </div>

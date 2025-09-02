@@ -90,7 +90,7 @@ export default function AppNavBar() {
             </>
           ) : (
             <Link
-              to={isLoginPage ? "/auth/signup" : "/auth/welcome"}
+              to={isLoginPage ? "/auth/signup" : "/auth/login"}
               className="px-4 py-2 bg-[#1E429F] text-white rounded-lg text-sm font-medium hover:bg-[#16367A] transition"
             >
               {isLoginPage ? "Sign up" : "Login"}
