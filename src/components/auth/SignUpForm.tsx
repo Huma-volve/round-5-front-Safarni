@@ -1,14 +1,15 @@
 import { signUpData } from "@/lib/types";
 import { useFormik } from "formik";
-import FormField from "../ui/FormField";
 import { Check, Lock, Mail, User } from "lucide-react";
 import { signUpSchema } from "@/utils/AuthSchema";
 import { Button } from "../ui/button";
-import useSignUp from "@/hooks/Auth/useSignUp";
 import { AxiosError } from "axios";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import FormField from "../ui/FormField";
+import useSignUp from "@/hooks/Auth/useSignUp";
 
 // عرف الـ type بتاع الخطأ
 type ApiErrorResponse = {
@@ -23,6 +24,8 @@ type ApiErrorResponse = {
 
 export default function SignUpForm() {
   const { mutate: signUp, isError, error, isPending } = useSignUp();
+  const [passFocused, setPassFocused] = useState(false);
+  const [confirmPassFocussed , setConfirmPassFocused] = useState(false)
   const formik = useFormik<signUpData>({
     initialValues: {
       name: "",
@@ -35,7 +38,17 @@ export default function SignUpForm() {
       signUp(values);
     },
   });
+  const showPasswordValidation = passFocused || formik.touched.password;
+  const showConfirmValidation = confirmPassFocussed || formik.touched.password_confirmation;
 
+  const passLessThan8 = showPasswordValidation &&formik.values.password.length < 8;
+  const passNotMatch = showConfirmValidation && formik.values.password_confirmation !== formik.values.password;
+  const passNotHaveNumber_Capital = showPasswordValidation && !/[0-9]/.test(formik.values.password) && !/[A-Z]/.test(formik.values.password);
+  const passNotHaveSpecial = showPasswordValidation && !/[!@#$%^&*(),.?":{}|<>]/.test(formik.values.password);
+  const passLenth8 = showPasswordValidation && formik.values.password.length >= 8;
+  const passMatch = showConfirmValidation && formik.values.password_confirmation === formik.values.password && (formik.values.password.length >= 8);
+  const passHaveNumberCapital = showPasswordValidation && /[0-9]/.test(formik.values.password) && /[A-Z]/.test(formik.values.password);
+  const passHaveSpecial = showPasswordValidation && /[!@#$%^&*(),.?":{}|<>]/.test(formik.values.password); 
   // خلي TypeScript يفهم نوع الـ error
   const apiError = error as AxiosError<ApiErrorResponse>;
 
@@ -109,7 +122,9 @@ export default function SignUpForm() {
           placeholder={"*************"}
           value={formik.values.password}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          onBlur={(e)=>{formik.handleBlur(e);
+            setPassFocused(false);
+          }}
           error={formik.errors.password}
           touched={formik.touched.password}
           className="bg-white pl-10 py-5"
@@ -119,6 +134,8 @@ export default function SignUpForm() {
               size={16}
             />
           }
+          onFocus={() => setPassFocused(true)}
+
         />
         {isError &&
           apiError?.response?.data?.data?.password?.map((passwordError) => (
@@ -136,7 +153,9 @@ export default function SignUpForm() {
           placeholder={"*************"}
           value={formik.values.password_confirmation}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          onBlur={(e)=>{formik.handleBlur(e);
+            setConfirmPassFocused(false);
+          }}
           error={formik.errors.password_confirmation}
           touched={formik.touched.password_confirmation}
           className="bg-white pl-10 py-5"
@@ -146,6 +165,7 @@ export default function SignUpForm() {
               size={16}
             />
           }
+          onFocus={() => setConfirmPassFocused(true)}
         />
         {isError &&
           apiError?.response?.data?.data?.password_confirmation?.map(
@@ -159,26 +179,33 @@ export default function SignUpForm() {
         {/* Password Rules */}
         {!isError && !isPending && (
           <>
-            <p className="text-sm text-gray-500 flex gap-2">
+            <p className={`text-sm text-gray-500 flex gap-2 ${passLessThan8 ? "text-red-500" : ""} ${passLenth8 ? "text-green-500" : ""}`}>
               <Check
-                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                className={`text-white p-1 rounded-full bg-gray-400 w-5 ${passLessThan8 ? "bg-red-500" : ""} ${passLenth8 ? "bg-green-500" : ""}`}
                 size={19}
               />
               Make sure your password is at least 8 characters
             </p>
-            <p className="text-sm text-gray-500 flex gap-2">
+            <p className={`text-sm text-gray-500 flex gap-2 ${passNotHaveSpecial ? "text-red-500" : ""} ${passHaveSpecial ? "text-green-500" : ""}`}>
               <Check
-                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                className={`text-white p-1 rounded-full bg-gray-400 w-5 ${passNotHaveSpecial ? "bg-red-500" : ""} ${passHaveSpecial ? "bg-green-500" : ""}`}
                 size={19}
               />
               Must contain one special character
             </p>
-            <p className="text-sm text-gray-500 flex gap-2">
+            <p className={`text-sm text-gray-500 flex gap-2 ${passNotHaveNumber_Capital ? "text-red-500" : ""} ${passHaveNumberCapital ? "text-green-500" : ""}`}>
               <Check
-                className="text-white p-1 rounded-full bg-gray-400 w-5"
+                className={`text-white p-1 rounded-full bg-gray-400 w-5 ${passNotHaveNumber_Capital ? 'bg-red-500':''} ${passHaveNumberCapital?'bg-green-500':''}`}
                 size={19}
               />
               Must contain one capital letter and one number
+            </p>
+            <p className={`text-sm text-gray-500 flex gap-2 ${passNotMatch ? "text-red-500" : ""} ${passMatch ? "text-green-500" : ""}`}>
+              <Check
+                className={`text-white p-1 rounded-full bg-gray-400 w-5 ${passNotMatch ? 'bg-red-500':''} ${passMatch?'bg-green-500':''}`}
+                size={19}
+              />
+              Must Match
             </p>
           </>
         )}

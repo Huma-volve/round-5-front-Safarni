@@ -13,6 +13,7 @@ interface FormFieldProps {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   error?: string;
   touched?: boolean;
   min?: string;
@@ -33,6 +34,7 @@ export default function FormField({
   value,
   onChange,
   onBlur,
+  onFocus,
   error,
   touched,
   min,
@@ -75,6 +77,7 @@ export default function FormField({
             value={value}
             onChange={onChange}
             onBlur={onBlur}
+            onFocus={onFocus}
             className={inputClassName}
             min={min}
             step={step}
