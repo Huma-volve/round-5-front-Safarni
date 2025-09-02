@@ -1,29 +1,14 @@
 import { Card } from '@/components/ui/card';
  import { Calendar, Clock } from 'lucide-react';
-import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
 import { Link, useParams } from 'react-router-dom';
 import carImages from "@/data/CarImages";
+import { useCarDetails } from '@/api/car-deails';
 
 export default function CarDetails() {
-  const token= localStorage.getItem("token")
-  const {id} = useParams()
+    const { id } = useParams();
   const carId = Number(id);
   const carImage = carImages.find((img) => img.id === carId);
-
-    const {data} = useQuery({
-        queryKey: ['car' , id],
-        queryFn: async()=>{
-            const options = {
-                method: "get",
-                url: `http://round5-safarnia.huma-volve.com/api/cars/${id}`,
-               headers: {
-                     Authorization: 
-                     `Bearer ${token}`,}, }
-            const {data} = await axios.request(options)
-            console.log("details", data)
-            return data
-        }      })
+  const { data } = useCarDetails(carId);
   return (
     <main className="container h-[calc(100vh-100px)] flex items-center">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 ">
@@ -90,7 +75,7 @@ export default function CarDetails() {
           </div>
 
           <div className='w-full'>
-            <Link to='/maps' className="w-full block text-center bg-[#1E429F] hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded-md shadow-md transition-all">
+            <Link to='/MapWithRoute'  state={{ selectedCar: data }} className="w-full block text-center bg-[#1E429F] hover:bg-blue-800 text-white font-semibold px-6 py-2 rounded-md shadow-md transition-all">
               Pick Up
             </Link >
           </div>
