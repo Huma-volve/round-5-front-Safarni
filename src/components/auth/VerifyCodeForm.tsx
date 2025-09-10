@@ -7,6 +7,7 @@ import useVerifyCode from "@/hooks/Auth/useVerifyCode";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "../ui/input-otp";
 import { Link, useLocation } from "react-router-dom";
 import useForget from "@/hooks/Auth/useForget";
+import { AxiosError } from "axios";
 
 export default function VerifyCodeForm() {
   const { mutate: verifyCode, isPending, isError, error } = useVerifyCode();
@@ -79,7 +80,7 @@ export default function VerifyCodeForm() {
           )}
           {isError && (
             <p className="text-red-500 text-sm">
-              {error?.response?.data?.data?.otp[0]}
+              {(error as AxiosError<{data?: {otp?: string[]}}> | undefined)?.response?.data?.data?.otp?.[0]}
             </p>
           )}
         </div>

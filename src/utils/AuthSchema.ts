@@ -33,7 +33,7 @@ export const signUpSchema = yup.object({
     .required("Password is required"),
   password_confirmation: yup
     .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .oneOf([yup.ref("password")], "Passwords must match")
     .required("Confirm Password is required"),
 });
 
@@ -54,7 +54,7 @@ export const resetPasswordSchema = yup.object({
     .required("Password is required"),
   password_confirmation: yup
     .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .oneOf([yup.ref("password")], "Passwords must match")
     .required("Confirm Password is required"),
 });
 

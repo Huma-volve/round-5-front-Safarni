@@ -5,6 +5,7 @@ import { KeyIcon, Mail } from "lucide-react";
 import { forgetPasswordSchema } from "@/utils/AuthSchema";
 import { Button } from "../ui/button";
 import useForget from "@/hooks/Auth/useForget";
+import { AxiosError } from "axios";
 
 export default function ForgetForm() {
   const { mutate: forget, isPending, error, isError } = useForget();
@@ -47,7 +48,7 @@ export default function ForgetForm() {
         />
         {isError && (
           <p className="text-red-500 text-sm">
-            {error?.response?.data?.data?.email[0]}
+            {(error as AxiosError<{data?: {email?: string[]}}> | undefined)?.response?.data?.data?.email?.[0]}
           </p>
         )}
         <div>

@@ -6,8 +6,7 @@ import img2 from "@/assets/images/trip2.jpg";
 import img3 from "@/assets/images/trip3.jpeg";
 import img4 from "@/assets/images/boat-trips.jpg";
 
-import "swiper/css";
-import "swiper/css/pagination";
+import "swiper/swiper-bundle.css";
 
 export default function IntroHome() {
   return (

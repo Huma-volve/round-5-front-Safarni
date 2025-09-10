@@ -54,3 +54,12 @@ export interface TourResponse {
   is_recommended: boolean;
   rating: number;
 }
+
+// export interface LocationResponse {
+//   id: number;
+//   name: string;
+//   latitude: number;
+//   longitude: number;
+//   country?: string;
+//   region?: string;
+// }
