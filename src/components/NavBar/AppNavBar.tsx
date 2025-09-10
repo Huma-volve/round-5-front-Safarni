@@ -10,14 +10,15 @@ import {
   LogIn,
 } from "lucide-react";
 import profileicon from "@/assets/images/icons/avatar-navicon.jpg";
+import { is } from "zod/v4/locales";
 
 export default function AppNavBar() {
   const token = localStorage.getItem("token");
   const isAuthenticated = !!token;
   const location = useLocation();
 
-  const isLoginPage = location.pathname === "/auth/welcome" || location.pathname === "/auth/login";
-
+  const isLoginPage = location.pathname === "/auth/login";
+  const isSignUpPage = location.pathname === "/auth/signup";
   return (
     <>
       {/* Top Navbar (Desktop / Tablet) */}
@@ -90,10 +91,10 @@ export default function AppNavBar() {
             </>
           ) : (
             <Link
-              to={isLoginPage ? "/auth/signup" : "/auth/welcome"}
+              to={isLoginPage ? "/auth/signup" : isSignUpPage ? "/auth/login" : "/auth/welcome"}
               className="px-4 py-2 bg-[#1E429F] text-white rounded-lg text-sm font-medium hover:bg-[#16367A] transition"
             >
-              {isLoginPage ? "Sign up" : "Login"}
+              {isLoginPage ? "Sign up" : isSignUpPage ? "Login" : "Welcome"}
             </Link>
           )}
         </div>
