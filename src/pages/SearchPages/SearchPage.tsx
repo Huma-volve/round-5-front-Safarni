@@ -75,6 +75,7 @@ export default function SearchPage() {
               src={locationImg}
               alt="location"
               className="w-20 h-20 rounded-lg object-cover"
+              loading="lazy"
             />
             <h3 className="text-base md:text-lg font-semibold text-blue-900">
               {loc}
