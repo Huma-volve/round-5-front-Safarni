@@ -5,14 +5,14 @@ import CameraIcon from "@/assets/images/icons/CameraIcon.svg";
 function RoomAddReview() {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState<File | null>(null);
 
-  const handleStarClick = (index) => {
+  const handleStarClick = (index: number) => {
     setRating(index + 1);
   };
 
-  const handlePhotoChange = (e) => {
-    setPhoto(e.target.files[0]);
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhoto(e.target.files?.[0] || null);
   };
 
   const handleSubmit = () => {

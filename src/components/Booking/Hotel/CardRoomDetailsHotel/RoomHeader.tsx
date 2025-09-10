@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ImgStar from "@/assets/images/icons/ImgStar.svg";
 import RoomAbout from "./RoomAbout";
 import RoomGallery from "./RoomGallery";
