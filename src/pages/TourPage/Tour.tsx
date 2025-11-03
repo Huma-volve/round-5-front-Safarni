@@ -4,8 +4,9 @@ import BestTimeVisit from "@/components/Tour/BestTimeVisit";
 import Gallery from "@/components/Tour/Gallery";
 import Reviews from "@/components/common/Reviews";
 import { useParams } from "react-router-dom";
-import useTour from "@/hooks/Tours/useTour";
+
 import TourBooking from "@/components/Tour/TourBooking";
+import useTour from "@/hooks/Tours/UseTour";
 
 
 function Tour() {
@@ -13,7 +14,7 @@ function Tour() {
   const tour_id = params.id as string
   console.log(tour_id);
 
-  const {data:tour, isPending, error } = useTour(parseInt(tour_id))
+  const {data:tour, isPending } = useTour(parseInt(tour_id))
   console.log(tour);
 
   if (!tour) return

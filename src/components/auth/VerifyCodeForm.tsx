@@ -79,7 +79,7 @@ export default function VerifyCodeForm() {
           )}
           {isError && (
             <p className="text-red-500 text-sm">
-              {error?.response?.data?.data?.otp[0]}
+              {error?.message}
             </p>
           )}
         </div>

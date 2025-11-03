@@ -47,7 +47,7 @@ export default function ForgetForm() {
         />
         {isError && (
           <p className="text-red-500 text-sm">
-            {error?.response?.data?.data?.email[0]}
+            {error?.message}
           </p>
         )}
         <div>
