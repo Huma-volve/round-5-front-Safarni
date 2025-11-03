@@ -8,6 +8,7 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "../ui/input-otp";
 import { Link, useLocation } from "react-router-dom";
 import useForget from "@/hooks/Auth/useForget";
 
+
 export default function VerifyCodeForm() {
   const { mutate: verifyCode, isPending, isError, error } = useVerifyCode();
   const { mutate: resenCode, isPending: isResending } = useForget();

@@ -4,7 +4,6 @@ import Loading from "@/components/common/Loading";
 
 
 function CompareCard({ tourId }: { tourId: number }) {
-
   const { data, isLoading, isError, error } = useCompareDetails(tourId);
   if (isLoading) return <Loading />
 

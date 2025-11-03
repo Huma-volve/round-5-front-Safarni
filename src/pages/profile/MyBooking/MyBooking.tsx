@@ -4,7 +4,22 @@ import HotelTicketCard from "@/components/my-booking/HotelTicketCard/HotelTicket
 import TourTicketCard from "@/components/my-booking/TourTicketCard/TourTicketCard";
 import { Car, Plane, Globe, Bed} from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useState } from "react";
+
+interface Car {
+  id: number;
+  model: string;
+  brand: string;
+  daily_rate: string;
+  seats: number;
+  fuel_type: string;
+  transmission: string;
+}
+
 export default function MyBooking() {
+  const [selectedCar, setSelectedCar] = useState<Car | null>(null);
+  const [pickupDate, setPickupDate] = useState<Date | null>(null);
+  const [returnDate, setReturnDate] = useState<Date | null>(null);
   return (
  <main className="space-y-6 h-[calc(100vh-100px)]">
       <section className="py-8 space-y-6 container">
@@ -58,7 +73,14 @@ export default function MyBooking() {
                 <FlightTicketCard />
               </TabsContent>
               <TabsContent value="car">
-                <CarTicketCard />
+                <CarTicketCard 
+                  selectedCar={selectedCar}
+                  setSelectedCar={setSelectedCar}
+                  pickupDate={pickupDate}
+                  setPickupDate={setPickupDate}
+                  returnDate={returnDate}
+                  setReturnDate={setReturnDate}
+                />
               </TabsContent>
               <TabsContent value="tour">
                 <TourTicketCard />

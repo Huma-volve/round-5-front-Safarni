@@ -7,7 +7,6 @@ function RoomAddReview() {
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState<File | null>(null);
 
-
   const handleStarClick = (index: number) => {
     setRating(index + 1);
   };

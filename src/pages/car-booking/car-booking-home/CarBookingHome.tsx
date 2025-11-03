@@ -3,7 +3,7 @@ import PopularCarsCard from "@/components/car-booking/popular-cars-card/PopularC
 import brand from "@/data/Brands";
 import { CarData } from "@/types/CarDataTypes";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "swiper/swiper-bundle.css";
 import { Autoplay } from "swiper/modules";
 import { useCarBookingHome } from "@/api/car-booking-home";
 

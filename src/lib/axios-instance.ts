@@ -29,7 +29,7 @@ axiosInstance.interceptors.response.use(
     //   error.config?.url?.includes(endpoint)
     // );
     
-    if (error.response && error.response.status === 401 /*&& !isAuthEndpoint*/) {
+    if (error.response && error.response.status === 401) {
       console.error("Unauthorized, redirecting to login...");
       window.location.href = "/auth/login";
     }
