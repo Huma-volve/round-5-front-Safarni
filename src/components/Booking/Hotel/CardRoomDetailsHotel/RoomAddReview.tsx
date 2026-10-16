@@ -11,12 +11,9 @@ function RoomAddReview() {
     setRating(index + 1);
   };
 
-const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  if (e.target.files && e.target.files[0]) {
-    setPhoto(e.target.files[0]);
-  }
-};
-
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPhoto(e.target.files?.[0] || null);
+  };
 
   const handleSubmit = () => {
     if (!rating || !review.trim()) {
